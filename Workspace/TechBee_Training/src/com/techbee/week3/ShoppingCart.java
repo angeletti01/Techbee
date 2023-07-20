@@ -14,7 +14,9 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class ShoppingCart {
-Map<Integer, Double> cartPriceMap = new HashMap<>();
+Scanner s = new Scanner(System.in);
+Product p = new Product();
+Map<String, Double> cartPriceMap = new HashMap<>();
 List<Product> productObjectList = new ArrayList<>();
 List<ShoppingCart> cartList = new ArrayList<>();
 private int cartID = 0;
@@ -42,10 +44,44 @@ public ShoppingCart(String productName, double itemPrice,int productQuantity, do
 	this.itemPrice = itemPrice;
 }
 
-public Product add() {	
+public void initialization() {
+	{		
+		System.out.println("Please make a selection then press Enter.");
+		System.out.println("1. Show Sub-Total Balance");
+		System.out.println("2. Add Product");
+		System.out.println("3. Delete Product");		
+		System.out.println("4. Exit");		
+	}
 	
+	//ShoppingCart sc = new ShoppingCart(); 
+	//Product p = new Product();
 	Scanner s = new Scanner(System.in);
-	Product p = new Product();
+	byte choice = 0;
+	
+	choice = s.nextByte(); 
+	
+	 switch(choice) {
+	 case 1:
+		viewAll();
+		 break;
+	 case 2:
+		 add();
+		 break;
+	 case 3:
+		 delete();
+		 break;	
+	 case 4:
+		 System.out.println("Have a nice day!!!");
+		 System.exit(0); // suppose to exit program
+		 break;
+		 
+	default:
+		 System.out.println("Invalid Choice...");
+	 }
+}
+
+public Product add() {		
+	
 	byte choice = 0;
 	String name = null;	
 	String decision = null;
@@ -95,7 +131,7 @@ public Product add() {
 		s0.setCartName(name);
 		
 		cartList.add(s0); // stores all of the items ordered (ShoppingCart Objects)
-		cartPriceMap.put(s0.getCartID(),s0.getSubTotal()); // relates key:cartNumber
+		cartPriceMap.put(s0.getProductName(),s0.getSubTotal()); // relates key:cartNumber
 		System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
 		
 		System.out.println("Cart ID: "+s0.getCartID());
@@ -127,7 +163,7 @@ public Product add() {
 			s1.setCartName(name);
 			
 			cartList.add(s1); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s1.getCartID(),s1.getSubTotal()); // relates key:cartNumber
+			cartPriceMap.put(s1.getProductName(),s1.getSubTotal()); // relates key:cartNumber
 			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
 			
 			System.out.println("Cart ID: "+s1.getCartID());
@@ -158,7 +194,7 @@ public Product add() {
 			s2.setCartName(name);
 			
 			cartList.add(s2); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s2.getCartID(),s2.getSubTotal()); // relates key:cartNumber
+			cartPriceMap.put(s2.getProductName(),s2.getSubTotal()); // relates key:cartNumber
 			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
 			
 			System.out.println("Cart ID: "+s2.getCartID());
@@ -189,7 +225,7 @@ public Product add() {
 			s3.setCartName(name);
 			
 			cartList.add(s3); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s3.getCartID(),s3.getSubTotal()); // relates key:cartNumber
+			cartPriceMap.put(s3.getProductName(),s3.getSubTotal()); // relates key:cartNumber
 			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
 			
 			System.out.println("Cart ID: "+s3.getCartID());
@@ -220,7 +256,7 @@ public Product add() {
 			s4.setCartName(name);
 			
 			cartList.add(s4); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s4.getCartID(),s4.getSubTotal()); // relates key:cartNumber
+			cartPriceMap.put(s4.getProductName(),s4.getSubTotal()); // relates key:cartNumber
 			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
 			
 			System.out.println("Cart ID: "+s4.getCartID());
@@ -251,7 +287,7 @@ public Product add() {
 			s5.setCartName(name);
 			
 			cartList.add(s5); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s5.getCartID(),s5.getSubTotal()); // relates key:cartNumber
+			cartPriceMap.put(s5.getProductName(),s5.getSubTotal()); // relates key:cartNumber
 			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
 			
 			System.out.println("Cart ID: "+s5.getCartID());
@@ -283,7 +319,7 @@ public Product add() {
 			s6.setCartName(name);
 			
 			cartList.add(s6); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s6.getCartID(),s6.getSubTotal()); // relates key:cartNumber
+			cartPriceMap.put(s6.getProductName(),s6.getSubTotal()); // relates key:cartNumber
 			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
 			
 			System.out.println("Cart ID: "+s6.getCartID());
@@ -315,7 +351,7 @@ public Product add() {
 			s7.setCartName(name);
 			
 			cartList.add(s7); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s7.getCartID(),s7.getSubTotal()); // relates key:cartNumber
+			cartPriceMap.put(s7.getProductName(),s7.getSubTotal()); // relates key:cartNumber
 			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
 			
 			System.out.println("Cart ID: "+s7.getCartID());
@@ -353,6 +389,7 @@ public Product add() {
 	
 	}while(isDone == false); // continue allowing selection until finished	
 	
+	s.close();
 	return p;
 }
 
@@ -360,7 +397,7 @@ public List<ShoppingCart> viewAll(){
 	/* This method will only display the list of items and the sub-total. Then customer has choice
 	 * to edit cart or continue to checkout*/
 	
-	System.out.println("Contents of Shopping Cart"); // Debugging 
+	System.out.println("********************Contents of Shopping Cart********************"); // Debugging 
 	int counter = 0;
 	for(ShoppingCart e: cartList ) {
 		
@@ -373,25 +410,66 @@ public List<ShoppingCart> viewAll(){
 		counter++;
 	}
 	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); // the the sums of the sub totals
-	System.out.println("Sub Total: "+"$"+sumOfSubTotals); 
+	System.out.println("Sub Total: "+"$"+sumOfSubTotals+"\n"); 
 	
+	//s.wait(100); // add delay
+	
+	initialization();
+	s.close();
 	return cartList;
 }
 
 public void delete() {
-	System.out.println("You are in the delete Method!!!"); // Debugging
+	byte selection = 0;
+	
+	
+	System.out.println("********************Contents of Shopping Cart********************"); 
+	int counter = 0;
+	for(ShoppingCart e: cartList ) {
+		
+		System.out.println("Item Number: "+counter);
+		System.out.println("Product Name: "+e.getProductName());		
+		System.out.println("Quantity: "+e.getProductQuantity());
+		//System.out.println("Price: "+e.getItemPrice()+"\n");
+		
+		//System.out.println("Sub Total: "+"$"+e.getSubTotal()); //WARNING: !! Need printf and formatting for second decimal place !!
+		counter++;
+	}
+	System.out.println("Select Item Number of the Item to Delete then Press Enter."); 
+	selection = s.nextByte();	
+	cartPriceMap.remove(selection);
+	cartList.remove(selection); // remove selected element
+	
+	System.out.println("Item Deleted!");
+	viewAll();
+	
+for(ShoppingCart e: cartList ) {
+		
+		System.out.println("Item Number: "+counter);
+		System.out.println("Product Name: "+e.getProductName());		
+		System.out.println("Quantity: "+e.getProductQuantity());
+		//System.out.println("Price: "+e.getItemPrice()+"\n");
+		
+		//System.out.println("Sub Total: "+"$"+e.getSubTotal()); //WARNING: !! Need printf and formatting for second decimal place !!
+		counter++;
+	}
+
+	
+s.close();
 }
 
 public void checkOut() {
 	System.out.println("You are in the checkOut Method!!!"); // Debugging
+	
+	s.close();
 }
 
 /******************************Boilerplate Code******************************/
-public Map<Integer, Double> getCartPriceMap() {
+public Map<String, Double> getCartPriceMap() {
 	return cartPriceMap;
 }
 
-public void setCartPriceMap(Map<Integer, Double> cartPriceMap) {
+public void setCartPriceMap(Map<String, Double> cartPriceMap) {
 	this.cartPriceMap = cartPriceMap;
 }
 
@@ -490,6 +568,5 @@ public String toString() {
 			+ ", productQuantity=" + productQuantity + ", productName=" + productName + ", cartName=" + cartName
 			+ ", isDone=" + isDone + ", sumOfSubTotals=" + sumOfSubTotals + ", itemPrice=" + itemPrice + "]";
 }
-
 
 } // end class
