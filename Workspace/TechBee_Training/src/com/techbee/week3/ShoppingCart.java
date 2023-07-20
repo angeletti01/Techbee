@@ -25,12 +25,12 @@ private int cartID = 0;
 private double subTotal = 0;
 private double total = 0;
 private double salesTax = .10;
-private int productQuantity = 0;
-private String productName = null;
+private int productQuantity = 0; // in Product
+private String productName = null; // in Product
 private String cartName = null;
 private boolean isDone = false;
 private double sumOfSubTotals = 0;
-private double itemPrice = 0;
+private double itemPrice = 0; // In Product as productPrice
 
 
 public ShoppingCart() {
@@ -463,7 +463,7 @@ public List<ShoppingCart> viewAll(){
 }
 
 public void delete() {
-	byte selection = 0;	
+	int selection = 0;	
 	
 	if(cartList.size() == 0) {
 		System.out.println("There is nothing in the Shopping Cart \n");
@@ -483,12 +483,19 @@ public void delete() {
 			counter++;
 		}
 	System.out.println("Select Item Number of the Item to Delete then Press Enter."); 
-	selection = s.nextByte();	
+	selection = s.nextInt();
+	
+	if(cartList.size() < selection) {
+		System.out.println("Incorrect value, please try again! \n");
+		delete();
+	}
+	else {
 	cartPriceMap.remove(cartList.get(selection).productName); // remove selected element
 	cartList.remove(selection); // remove selected element
 	
 	System.out.println("Item Deleted!");
 	viewAll();
+	}
 	}
 //for(ShoppingCart e: cartList ) {
 //		
