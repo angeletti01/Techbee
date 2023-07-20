@@ -431,8 +431,7 @@ public Product add() {
 }
 
 public List<ShoppingCart> viewAll(){
-	/* This method will only display the list of items and the sub-total. Then customer has choice
-	 * to edit cart or continue to checkout*/
+	
 	if(cartList.size() == 0) {
 		System.out.println("There is nothing in the Shopping Cart! \n");
 		initialization();
@@ -448,13 +447,12 @@ public List<ShoppingCart> viewAll(){
 		System.out.printf("Price: "+"$"+"%.2f",e.getItemPrice());
 		System.out.println();
 		
-		//System.out.println("Sub Total: "+"$"+e.getSubTotal()); //WARNING: !! Need printf and formatting for second decimal place !!
 		counter++;
 	}
+	
 	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); // the the sums of the sub totals
 	System.out.printf("Sub Total: "+"$"+"%.2f",sumOfSubTotals); 
-	System.out.println("\n");	
-
+	System.out.println("\n");
 	
 	initialization();
 	s.close();
@@ -477,9 +475,8 @@ public void delete() {
 			System.out.println("Item Number: "+counter);
 			System.out.println("Product Name: "+e.getProductName());		
 			System.out.println("Quantity: "+e.getProductQuantity());
-			//System.out.println("Price: "+e.getItemPrice()+"\n");
+			//System.out.println("Price: "+e.getItemPrice()+"\n");			
 			
-			//System.out.println("Sub Total: "+"$"+e.getSubTotal()); //WARNING: !! Need printf and formatting for second decimal place !!
 			counter++;
 		}
 	System.out.println("Select Item Number of the Item to Delete then Press Enter."); 
@@ -497,16 +494,7 @@ public void delete() {
 	viewAll();
 	}
 	}
-//for(ShoppingCart e: cartList ) {
-//		
-//		System.out.println("Item Number: "+counter);
-//		System.out.println("Product Name: "+e.getProductName());		
-//		System.out.println("Quantity: "+e.getProductQuantity());
-//		//System.out.println("Price: "+e.getItemPrice()+"\n");
-//		
-//		//System.out.println("Sub Total: "+"$"+e.getSubTotal()); //WARNING: !! Need printf and formatting for second decimal place !!
-//		counter++;
-//	}	
+
 s.close();
 }
 
@@ -552,15 +540,6 @@ public void checkOut() {
 	System.out.println("To complete purchase. Please contact cashier and give Shopping Cart ID."+ "\n"+
 						"Your order is ready for pickup. \n"+ "Shopping Cart ID: "+shoppingCartID); 	
 	
-//	for(ShoppingCart e: cartList ) {
-//		
-//		System.out.println("Item Number: "+counter);
-//		System.out.println("Product Name: "+e.getProductName());		
-//		System.out.println("Quantity: "+e.getProductQuantity());
-//		//System.out.println("Price: "+e.getItemPrice()+"\n");		
-//		//System.out.println("Sub Total: "+"$"+e.getSubTotal()); //WARNING: !! Need printf and formatting for second decimal place !!
-//		counter++;		
-//	}	
 	System.out.println("Cart Name: "+ cartName);
 	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); // the the sums of the sub totals
 	System.out.printf("Sub Total: "+"$"+"%.2f",sumOfSubTotals); 
@@ -576,8 +555,7 @@ public void checkOut() {
 	cartList.clear();
 	s.close();
 	System.exit(0);
-	}
-	
+	}	
 }
 
 /******************************Boilerplate Code******************************/
