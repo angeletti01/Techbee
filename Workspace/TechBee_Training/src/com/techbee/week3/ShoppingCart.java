@@ -25,12 +25,12 @@ private int cartID = 0;
 private double subTotal = 0;
 private double total = 0;
 private double salesTax = .10;
-private int productQuantity = 0; // in Product
-private String productName = null; // in Product
+private int productQuantity = 0; 
+private String productName = null; 
 private String cartName = null;
 private boolean isDone = false;
 private double sumOfSubTotals = 0;
-private double itemPrice = 0; // In Product as productPrice
+private double itemPrice = 0;
 
 
 public ShoppingCart() {
@@ -88,7 +88,7 @@ public void initialization() {
 		 break;
 	 case "6":		 
 		 System.out.println("Thank you for shopping with us. Have a nice day!!!");
-		 System.exit(0); // suppose to exit program
+		 System.exit(0);
 		 break;
 		 
 	default:
@@ -116,16 +116,15 @@ public Product add() {
 	System.out.println("***************************List of Products***************************");
 	for(Product e: p.productList) {
 		System.out.println("**************"+e.getProductName()+"**************");
-		System.out.println("Item Number: "+e.getItemID());
-		//System.out.println("Product Name: "+e.getProductName() );
+		System.out.println("Item Number: "+e.getItemID());		
 		System.out.println("Product Details: "+e.getProductDetails());
 		System.out.printf("Product Price:"+"$"+"%.2f",e.getProductPrice());
 		System.out.println();
 		
-		productObjectList.add(e); // store product objects into list for processing orders
+		productObjectList.add(e); 
 	}
 	
-	System.out.println(this.getCartName()); // display cart name at the top of the cart
+	System.out.println(this.getCartName()); 
 	
 	System.out.println("Enter item number of the item you want to add to your cart and press Enter.");
 	System.out.println("Type 8 then Enter if finished.");
@@ -151,13 +150,12 @@ public Product add() {
 		s0.setSubTotal(subTotal);
 		s0.setCartName(name);
 		
-		cartList.add(s0); // stores all of the items ordered (ShoppingCart Objects)
-		cartPriceMap.put(s0.getProductName(),s0.getSubTotal()); // relates key:cartNumber
-		//System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+		cartList.add(s0); 
+		cartPriceMap.put(s0.getProductName(),s0.getSubTotal()); 		
 		
 		System.out.println("Cart ID: "+s0.getCartID());
 		System.out.println("Name: "+s0.getProductName());
-		System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+		System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); 
 		System.out.println();
 		System.out.printf("Sub Total: "+"$"+"%.2f",s0.getSubTotal());
 		System.out.println();
@@ -185,13 +183,12 @@ public Product add() {
 			s1.setSubTotal(subTotal);
 			s1.setCartName(name);
 			
-			cartList.add(s1); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s1.getProductName(),s1.getSubTotal()); // relates key:cartNumber
-			//System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			cartList.add(s1); 
+			cartPriceMap.put(s1.getProductName(),s1.getSubTotal()); 		
 			
 			System.out.println("Cart ID: "+s1.getCartID());
 			System.out.println("Name: "+s1.getProductName());
-			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); 
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s1.getSubTotal());
 			System.out.println();
@@ -218,13 +215,13 @@ public Product add() {
 			s2.setSubTotal(subTotal);
 			s2.setCartName(name);
 			
-			cartList.add(s2); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s2.getProductName(),s2.getSubTotal()); // relates key:cartNumber
-			//System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			cartList.add(s2); 
+			cartPriceMap.put(s2.getProductName(),s2.getSubTotal()); 
+			
 			
 			System.out.println("Cart ID: "+s2.getCartID());
 			System.out.println("Name: "+s2.getProductName());
-			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); 
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s2.getSubTotal());
 			System.out.println();
@@ -251,13 +248,13 @@ public Product add() {
 			s3.setSubTotal(subTotal);
 			s3.setCartName(name);
 			
-			cartList.add(s3); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s3.getProductName(),s3.getSubTotal()); // relates key:cartNumber
-			//System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			cartList.add(s3); 
+			cartPriceMap.put(s3.getProductName(),s3.getSubTotal()); 
+			
 			
 			System.out.println("Cart ID: "+s3.getCartID());
 			System.out.println("Name: "+s3.getProductName());
-			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); 
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s3.getSubTotal());
 			System.out.println();
@@ -284,13 +281,12 @@ public Product add() {
 			s4.setSubTotal(subTotal);
 			s4.setCartName(name);
 			
-			cartList.add(s4); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s4.getProductName(),s4.getSubTotal()); // relates key:cartNumber
-			//System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			cartList.add(s4); 
+			cartPriceMap.put(s4.getProductName(),s4.getSubTotal()); 			
 			
 			System.out.println("Cart ID: "+s4.getCartID());
 			System.out.println("Name: "+s4.getProductName());
-			System.out.printf("Price: "+"$"+"%.2f",productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.printf("Price: "+"$"+"%.2f",productObjectList.get(index).getProductPrice()); 
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s4.getSubTotal());
 			System.out.println();
@@ -317,13 +313,13 @@ public Product add() {
 			s5.setSubTotal(subTotal);
 			s5.setCartName(name);
 			
-			cartList.add(s5); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s5.getProductName(),s5.getSubTotal()); // relates key:cartNumber
-			//System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			cartList.add(s5); 
+			cartPriceMap.put(s5.getProductName(),s5.getSubTotal()); 
+			
 			
 			System.out.println("Cart ID: "+s5.getCartID());
 			System.out.println("Name: "+s5.getProductName());
-			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); 
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s5.getSubTotal());
 			System.out.println();
@@ -351,13 +347,13 @@ public Product add() {
 			s6.setSubTotal(subTotal);
 			s6.setCartName(name);
 			
-			cartList.add(s6); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s6.getProductName(),s6.getSubTotal()); // relates key:cartNumber
-			//System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			cartList.add(s6); 
+			cartPriceMap.put(s6.getProductName(),s6.getSubTotal()); 
+		
 			
 			System.out.println("Cart ID: "+s6.getCartID());
 			System.out.println("Name: "+s6.getProductName());
-			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); 
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s6.getSubTotal());
 			System.out.println();
@@ -385,13 +381,12 @@ public Product add() {
 			s7.setSubTotal(subTotal);
 			s7.setCartName(name);
 			
-			cartList.add(s7); // stores all of the items ordered (ShoppingCart Objects)
-			cartPriceMap.put(s7.getProductName(),s7.getSubTotal()); // relates key:cartNumber
-			//System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			cartList.add(s7); 
+			cartPriceMap.put(s7.getProductName(),s7.getSubTotal()); 			
 			
 			System.out.println("Cart ID: "+s7.getCartID());
 			System.out.println("Name: "+s7.getProductName());
-			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.printf("Price: " +"$"+"%.2f",productObjectList.get(index).getProductPrice()); 
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s7.getSubTotal());
 			System.out.println();
@@ -409,12 +404,11 @@ public Product add() {
 	}
 	System.out.println("Are you finished shopping? Please enter yes or no then press Enter");
 	
-	decision = s.next().toLowerCase();
-	//System.out.println("Decision: "+decision); // debug
+	decision = s.next().toLowerCase();	
 	
 	if(decision.equals("yes")) {
 		isDone = true;
-		viewAll(); // navigate to viewAll method for list of items and sub total. 
+		viewAll(); 
 	}
 	else if(decision.equals("no")) {
 	isDone = false;	
@@ -424,7 +418,7 @@ public Product add() {
 		isDone = false;
 	}
 	
-	}while(isDone == false); // continue allowing selection until finished	
+	}while(isDone == false); 
 	
 	s.close();
 	return p;
@@ -437,7 +431,7 @@ public List<ShoppingCart> viewAll(){
 		initialization();
 	}
 	else {
-	System.out.println("********************Contents of Shopping Cart********************"); // Debugging 
+	System.out.println("********************Contents of Shopping Cart********************"); 
 	int counter = 0;
 	for(ShoppingCart e: cartList ) {
 		
@@ -450,7 +444,7 @@ public List<ShoppingCart> viewAll(){
 		counter++;
 	}
 	
-	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); // the the sums of the sub totals
+	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); 
 	System.out.printf("Sub Total: "+"$"+"%.2f",sumOfSubTotals); 
 	System.out.println("\n");
 	
@@ -474,8 +468,7 @@ public void delete() {
 			
 			System.out.println("Item Number: "+counter);
 			System.out.println("Product Name: "+e.getProductName());		
-			System.out.println("Quantity: "+e.getProductQuantity());
-			//System.out.println("Price: "+e.getItemPrice()+"\n");			
+			System.out.println("Quantity: "+e.getProductQuantity());				
 			
 			counter++;
 		}
@@ -487,8 +480,8 @@ public void delete() {
 		delete();
 	}
 	else {
-	cartPriceMap.remove(cartList.get(selection).productName); // remove selected element
-	cartList.remove(selection); // remove selected element
+	cartPriceMap.remove(cartList.get(selection).productName); 
+	cartList.remove(selection); 
 	
 	System.out.println("Item Deleted!");
 	viewAll();
@@ -541,7 +534,7 @@ public void checkOut() {
 						"Your order is ready for pickup. \n"+ "Shopping Cart ID: "+shoppingCartID); 	
 	
 	System.out.println("Cart Name: "+ cartName);
-	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); // the the sums of the sub totals
+	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); 
 	System.out.printf("Sub Total: "+"$"+"%.2f",sumOfSubTotals); 
 	System.out.println();
 	System.out.printf("Sales Tax: "+"%.2f", salesTax);
@@ -558,7 +551,6 @@ public void checkOut() {
 	}	
 }
 
-/******************************Boilerplate Code******************************/
 public Map<String, Double> getCartPriceMap() {
 	return cartPriceMap;
 }
