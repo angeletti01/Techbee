@@ -24,19 +24,22 @@ private int productQuantity = 0;
 private String productName = null;
 private String cartName = null;
 private boolean isDone = false;
+private double sumOfSubTotals = 0;
+private double itemPrice = 0;
 
 public ShoppingCart() {
 	super();
 	// TODO Auto-generated constructor stub
 }
 
-public ShoppingCart(String productName, int productQuantity, double subTotal, String cartName, int cartID) {
+public ShoppingCart(String productName, double itemPrice,int productQuantity, double subTotal, String cartName, int cartID) {
 	super();
 	this.productName = productName;
 	this.productQuantity = productQuantity;
 	this.subTotal = subTotal;
 	this.cartName = cartName;
 	this.cartID = cartID;
+	this.itemPrice = itemPrice;
 }
 
 public Product add() {	
@@ -67,7 +70,8 @@ public Product add() {
 	
 	System.out.println(this.getCartName()); // display cart name at the top of the cart
 	
-	System.out.println("Enter item number of the item you want to add to your cart and press Enter");
+	System.out.println("Enter item number of the item you want to add to your cart and press Enter.");
+	System.out.println("Type 8 then Enter if finished.");
 	choice = s.nextByte();	
 	
 	switch(choice){
@@ -79,22 +83,24 @@ public Product add() {
 		System.out.println("Storing....");
 		
 		subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
+		itemPrice = productObjectList.get(choice).getProductPrice();
 		
 		ShoppingCart s0= new ShoppingCart(productObjectList.get(index).getProductName(),
-				productQuantity, subTotal, cartName, index);
+				itemPrice,productQuantity, subTotal, cartName, index);
 		s0.setCartID(index);
 		s0.setProductName(productObjectList.get(index).getProductName());
+		s0.setItemPrice(itemPrice);
 		s0.setProductQuantity(productQuantity);
 		s0.setSubTotal(subTotal);
 		s0.setCartName(name);
 		
 		cartList.add(s0); // stores all of the items ordered (ShoppingCart Objects)
 		cartPriceMap.put(s0.getCartID(),s0.getSubTotal()); // relates key:cartNumber
-		System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue());
+		System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
 		
 		System.out.println("Cart ID: "+s0.getCartID());
 		System.out.println("Name: "+s0.getProductName());
-		System.out.println("Price: " +productObjectList.get(index).getProductPrice());
+		System.out.println("Price: " +productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
 		System.out.println("Sub Total: "+s0.getSubTotal());
 		System.out.println("Cart Name: "+s0.getCartName());		
 		}
@@ -102,19 +108,226 @@ public Product add() {
 		
 		break;
 	case 1:
-		
+		do {
+			index = choice;
+			System.out.println("How many would you like?");
+			productQuantity = s.nextInt();
+			System.out.println("Storing....");
+			
+			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
+			itemPrice = productObjectList.get(choice).getProductPrice();
+			
+			ShoppingCart s1= new ShoppingCart(productObjectList.get(index).getProductName(),
+					itemPrice,productQuantity, subTotal, cartName, index);
+			s1.setCartID(index);
+			s1.setProductName(productObjectList.get(index).getProductName());
+			s1.setItemPrice(itemPrice);
+			s1.setProductQuantity(productQuantity);
+			s1.setSubTotal(subTotal);
+			s1.setCartName(name);
+			
+			cartList.add(s1); // stores all of the items ordered (ShoppingCart Objects)
+			cartPriceMap.put(s1.getCartID(),s1.getSubTotal()); // relates key:cartNumber
+			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			
+			System.out.println("Cart ID: "+s1.getCartID());
+			System.out.println("Name: "+s1.getProductName());
+			System.out.println("Price: " +productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.println("Sub Total: "+s1.getSubTotal());
+			System.out.println("Cart Name: "+s1.getCartName());			
+			}
+			while(productQuantity <= 0);
 		break;
 	case 2:
+		do {
+			index = choice;
+			System.out.println("How many would you like?");
+			productQuantity = s.nextInt();
+			System.out.println("Storing....");
+			
+			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
+			itemPrice = productObjectList.get(choice).getProductPrice();
+			
+			ShoppingCart s2= new ShoppingCart(productObjectList.get(index).getProductName(),itemPrice,
+					productQuantity, subTotal, cartName, index);
+			s2.setCartID(index);
+			s2.setProductName(productObjectList.get(index).getProductName());
+			s2.setItemPrice(itemPrice);
+			s2.setProductQuantity(productQuantity);
+			s2.setSubTotal(subTotal);
+			s2.setCartName(name);
+			
+			cartList.add(s2); // stores all of the items ordered (ShoppingCart Objects)
+			cartPriceMap.put(s2.getCartID(),s2.getSubTotal()); // relates key:cartNumber
+			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			
+			System.out.println("Cart ID: "+s2.getCartID());
+			System.out.println("Name: "+s2.getProductName());
+			System.out.println("Price: " +productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.println("Sub Total: "+s2.getSubTotal());
+			System.out.println("Cart Name: "+s2.getCartName());			
+			}
+			while(productQuantity <= 0);
 		break;
 	case 3:
+		do {
+			index = choice;
+			System.out.println("How many would you like?");
+			productQuantity = s.nextInt();
+			System.out.println("Storing....");
+			
+			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
+			itemPrice = productObjectList.get(choice).getProductPrice();
+			
+			ShoppingCart s3= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
+					productQuantity, subTotal, cartName, index);
+			s3.setCartID(index);
+			s3.setProductName(productObjectList.get(index).getProductName());
+			s3.setItemPrice(itemPrice);
+			s3.setProductQuantity(productQuantity);
+			s3.setSubTotal(subTotal);
+			s3.setCartName(name);
+			
+			cartList.add(s3); // stores all of the items ordered (ShoppingCart Objects)
+			cartPriceMap.put(s3.getCartID(),s3.getSubTotal()); // relates key:cartNumber
+			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			
+			System.out.println("Cart ID: "+s3.getCartID());
+			System.out.println("Name: "+s3.getProductName());
+			System.out.println("Price: " +productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.println("Sub Total: "+s3.getSubTotal());
+			System.out.println("Cart Name: "+s3.getCartName());			
+			}
+			while(productQuantity <= 0);
 		break;
 	case 4:
+		do {
+			index = choice;
+			System.out.println("How many would you like?");
+			productQuantity = s.nextInt();
+			System.out.println("Storing....");
+			
+			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
+			itemPrice = productObjectList.get(choice).getProductPrice();
+			
+			ShoppingCart s4= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
+					productQuantity, subTotal, cartName, index);
+			s4.setCartID(index);
+			s4.setProductName(productObjectList.get(index).getProductName());
+			s4.setItemPrice(itemPrice);
+			s4.setProductQuantity(productQuantity);
+			s4.setSubTotal(subTotal);
+			s4.setCartName(name);
+			
+			cartList.add(s4); // stores all of the items ordered (ShoppingCart Objects)
+			cartPriceMap.put(s4.getCartID(),s4.getSubTotal()); // relates key:cartNumber
+			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			
+			System.out.println("Cart ID: "+s4.getCartID());
+			System.out.println("Name: "+s4.getProductName());
+			System.out.println("Price: " +productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.println("Sub Total: "+s4.getSubTotal());
+			System.out.println("Cart Name: "+s4.getCartName());			
+			}
+			while(productQuantity <= 0);
 		break;
 	case 5:
+		do {
+			index = choice;
+			System.out.println("How many would you like?");
+			productQuantity = s.nextInt();
+			System.out.println("Storing....");
+			
+			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
+			itemPrice = productObjectList.get(choice).getProductPrice();
+			
+			ShoppingCart s5= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
+					productQuantity, subTotal, cartName, index);
+			s5.setCartID(index);
+			s5.setProductName(productObjectList.get(index).getProductName());
+			s5.setItemPrice(itemPrice);
+			s5.setProductQuantity(productQuantity);
+			s5.setSubTotal(subTotal);
+			s5.setCartName(name);
+			
+			cartList.add(s5); // stores all of the items ordered (ShoppingCart Objects)
+			cartPriceMap.put(s5.getCartID(),s5.getSubTotal()); // relates key:cartNumber
+			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			
+			System.out.println("Cart ID: "+s5.getCartID());
+			System.out.println("Name: "+s5.getProductName());
+			System.out.println("Price: " +productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.println("Sub Total: "+s5.getSubTotal());
+			System.out.println("Cart Name: "+s5.getCartName());			
+			}
+			while(productQuantity <= 0);
 		break;
 	case 6:
+		do {
+			index = choice;
+			System.out.println("How many would you like?");
+			productQuantity = s.nextInt();
+			System.out.println("Storing....");
+			
+			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
+			itemPrice = productObjectList.get(choice).getProductPrice();
+			
+			ShoppingCart s6= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
+					productQuantity, subTotal, cartName, index);
+			
+			s6.setCartID(index);
+			s6.setProductName(productObjectList.get(index).getProductName());
+			s6.setProductQuantity(productQuantity);
+			s6.setItemPrice(itemPrice);
+			s6.setSubTotal(subTotal);
+			s6.setCartName(name);
+			
+			cartList.add(s6); // stores all of the items ordered (ShoppingCart Objects)
+			cartPriceMap.put(s6.getCartID(),s6.getSubTotal()); // relates key:cartNumber
+			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			
+			System.out.println("Cart ID: "+s6.getCartID());
+			System.out.println("Name: "+s6.getProductName());
+			System.out.println("Price: " +productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.println("Sub Total: "+s6.getSubTotal());
+			System.out.println("Cart Name: "+s6.getCartName());			
+			}
+			while(productQuantity <= 0);
 		break;
 	case 7:
+		do {
+			index = choice;
+			System.out.println("How many would you like?");
+			productQuantity = s.nextInt();
+			System.out.println("Storing....");
+			
+			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
+			itemPrice = productObjectList.get(choice).getProductPrice();
+			
+			ShoppingCart s7= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
+					productQuantity, subTotal, cartName, index);
+			
+			s7.setCartID(index);
+			s7.setProductName(productObjectList.get(index).getProductName());
+			s7.setItemPrice(itemPrice);
+			s7.setProductQuantity(productQuantity);
+			s7.setSubTotal(subTotal);
+			s7.setCartName(name);
+			
+			cartList.add(s7); // stores all of the items ordered (ShoppingCart Objects)
+			cartPriceMap.put(s7.getCartID(),s7.getSubTotal()); // relates key:cartNumber
+			System.out.println("CartPriceMap Value: " +cartPriceMap.get(index).doubleValue()); // debug
+			
+			System.out.println("Cart ID: "+s7.getCartID());
+			System.out.println("Name: "+s7.getProductName());
+			System.out.println("Price: " +productObjectList.get(index).getProductPrice()); //WARNING: !! Need printf and formatting for second decimal place !!
+			System.out.println("Sub Total: "+s7.getSubTotal());
+			System.out.println("Cart Name: "+s7.getCartName());			
+			}
+			while(productQuantity <= 0);
+		break;
+	case 8:
+		viewAll();
 		break;
 		
 	default:
@@ -143,20 +356,26 @@ public Product add() {
 	return p;
 }
 
-public List<Product> viewAll(){
+public List<ShoppingCart> viewAll(){
 	/* This method will only display the list of items and the sub-total. Then customer has choice
 	 * to edit cart or continue to checkout*/
 	
 	System.out.println("Contents of Shopping Cart"); // Debugging 
-	
+	int counter = 0;
 	for(ShoppingCart e: cartList ) {
-		//System.out.println(e.getCartName());
+		
+		System.out.println("Item Number: "+counter);
 		System.out.println("Product Name: "+e.getProductName());		
 		System.out.println("Quantity: "+e.getProductQuantity());
-		System.out.println("Sub Total: "+e.getSubTotal());
+		System.out.println("Price: "+e.getItemPrice()+"\n");
 		
+		//System.out.println("Sub Total: "+"$"+e.getSubTotal()); //WARNING: !! Need printf and formatting for second decimal place !!
+		counter++;
 	}
-	return null;
+	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); // the the sums of the sub totals
+	System.out.println("Sub Total: "+"$"+sumOfSubTotals); 
+	
+	return cartList;
 }
 
 public void delete() {
@@ -248,7 +467,29 @@ public void setDone(boolean isDone) {
 	this.isDone = isDone;
 }
 
+public double getSumOfSubTotals() {
+	return sumOfSubTotals;
+}
 
+public void setSumOfSubTotals(double sumOfSubTotals) {
+	this.sumOfSubTotals = sumOfSubTotals;
+}
+
+public double getItemPrice() {
+	return itemPrice;
+}
+
+public void setItemPrice(double itemPrice) {
+	this.itemPrice = itemPrice;
+}
+
+@Override
+public String toString() {
+	return "ShoppingCart [cartPriceMap=" + cartPriceMap + ", productObjectList=" + productObjectList + ", cartList="
+			+ cartList + ", cartID=" + cartID + ", subTotal=" + subTotal + ", salesTax=" + salesTax
+			+ ", productQuantity=" + productQuantity + ", productName=" + productName + ", cartName=" + cartName
+			+ ", isDone=" + isDone + ", sumOfSubTotals=" + sumOfSubTotals + ", itemPrice=" + itemPrice + "]";
+}
 
 
 } // end class
