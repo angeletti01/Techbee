@@ -147,12 +147,6 @@ public Product add() {
 		
 		ShoppingCart s0= new ShoppingCart(productObjectList.get(index).getProductName(),
 				itemPrice,productQuantity, subTotal, cartName, index);
-		s0.setCartID(index);
-		s0.setProductName(productObjectList.get(index).getProductName());
-		s0.setItemPrice(itemPrice);
-		s0.setProductQuantity(productQuantity);
-		s0.setSubTotal(subTotal);
-		s0.setCartName(name);
 		
 		cartList.add(s0); 
 		cartPriceMap.put(s0.getProductName(),s0.getSubTotal()); 		
@@ -186,12 +180,6 @@ public Product add() {
 			
 			ShoppingCart s1= new ShoppingCart(productObjectList.get(index).getProductName(),
 					itemPrice,productQuantity, subTotal, cartName, index);
-			s1.setCartID(index);
-			s1.setProductName(productObjectList.get(index).getProductName());
-			s1.setItemPrice(itemPrice);
-			s1.setProductQuantity(productQuantity);
-			s1.setSubTotal(subTotal);
-			s1.setCartName(name);
 			
 			cartList.add(s1); 
 			cartPriceMap.put(s1.getProductName(),s1.getSubTotal()); 		
@@ -223,12 +211,6 @@ public Product add() {
 			
 			ShoppingCart s2= new ShoppingCart(productObjectList.get(index).getProductName(),itemPrice,
 					productQuantity, subTotal, cartName, index);
-			s2.setCartID(index);
-			s2.setProductName(productObjectList.get(index).getProductName());
-			s2.setItemPrice(itemPrice);
-			s2.setProductQuantity(productQuantity);
-			s2.setSubTotal(subTotal);
-			s2.setCartName(name);
 			
 			cartList.add(s2); 
 			cartPriceMap.put(s2.getProductName(),s2.getSubTotal()); 
@@ -261,12 +243,6 @@ public Product add() {
 			
 			ShoppingCart s3= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
 					productQuantity, subTotal, cartName, index);
-			s3.setCartID(index);
-			s3.setProductName(productObjectList.get(index).getProductName());
-			s3.setItemPrice(itemPrice);
-			s3.setProductQuantity(productQuantity);
-			s3.setSubTotal(subTotal);
-			s3.setCartName(name);
 			
 			cartList.add(s3); 
 			cartPriceMap.put(s3.getProductName(),s3.getSubTotal()); 
@@ -299,12 +275,6 @@ public Product add() {
 			
 			ShoppingCart s4= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
 					productQuantity, subTotal, cartName, index);
-			s4.setCartID(index);
-			s4.setProductName(productObjectList.get(index).getProductName());
-			s4.setItemPrice(itemPrice);
-			s4.setProductQuantity(productQuantity);
-			s4.setSubTotal(subTotal);
-			s4.setCartName(name);
 			
 			cartList.add(s4); 
 			cartPriceMap.put(s4.getProductName(),s4.getSubTotal()); 			
@@ -336,12 +306,6 @@ public Product add() {
 			
 			ShoppingCart s5= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
 					productQuantity, subTotal, cartName, index);
-			s5.setCartID(index);
-			s5.setProductName(productObjectList.get(index).getProductName());
-			s5.setItemPrice(itemPrice);
-			s5.setProductQuantity(productQuantity);
-			s5.setSubTotal(subTotal);
-			s5.setCartName(name);
 			
 			cartList.add(s5); 
 			cartPriceMap.put(s5.getProductName(),s5.getSubTotal()); 
@@ -375,13 +339,6 @@ public Product add() {
 			ShoppingCart s6= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
 					productQuantity, subTotal, cartName, index);
 			
-			s6.setCartID(index);
-			s6.setProductName(productObjectList.get(index).getProductName());
-			s6.setProductQuantity(productQuantity);
-			s6.setItemPrice(itemPrice);
-			s6.setSubTotal(subTotal);
-			s6.setCartName(name);
-			
 			cartList.add(s6); 
 			cartPriceMap.put(s6.getProductName(),s6.getSubTotal()); 
 		
@@ -412,13 +369,7 @@ public Product add() {
 			itemPrice = productObjectList.get(choice).getProductPrice();
 			
 			ShoppingCart s7= new ShoppingCart(productObjectList.get(index).getProductName(), itemPrice,
-					productQuantity, subTotal, cartName, index);
-			
-			s7.setCartID(index);
-			s7.setProductName(productObjectList.get(index).getProductName());
-			s7.setItemPrice(itemPrice);
-			s7.setProductQuantity(productQuantity);
-			s7.setSubTotal(subTotal);			
+					productQuantity, subTotal, cartName, index);			
 			
 			cartList.add(s7); 
 			cartPriceMap.put(s7.getProductName(),s7.getSubTotal()); 			
@@ -487,7 +438,8 @@ public List<ShoppingCart> viewAll(){
 		counter++;
 	}
 	
-	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); 
+	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum();
+	System.out.println("\n");
 	System.out.printf("Sub Total: "+"$"+"%.2f",sumOfSubTotals); 
 	System.out.println("\n");
 	
