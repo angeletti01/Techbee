@@ -605,31 +605,7 @@ public class ShoppingCart {
 			System.exit(0);
 		}
 	}
-
-	public Map<String, Double> getCartPriceMap() {
-		return cartPriceMap;
-	}
-
-	public void setCartPriceMap(Map<String, Double> cartPriceMap) {
-		this.cartPriceMap = cartPriceMap;
-	}
-
-	public List<Product> getProductObjectList() {
-		return productObjectList;
-	}
-
-	public void setProductObjectList(List<Product> productObjectList) {
-		this.productObjectList = productObjectList;
-	}
-
-	public List<ShoppingCart> getCartList() {
-		return cartList;
-	}
-
-	public void setCartList(List<ShoppingCart> cartList) {
-		this.cartList = cartList;
-	}
-
+	
 	public int getCartID() {
 		return cartID;
 	}
