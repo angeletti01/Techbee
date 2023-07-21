@@ -124,7 +124,7 @@ public Product add() {
 		productObjectList.add(e); 
 	}
 	
-	System.out.println(this.getCartName()); 
+	System.out.println("Shopping Cart Name: "+this.getCartName()); 
 	
 	System.out.println("Enter item number of the item you want to add to your cart and press Enter.");
 	System.out.println("Type 8 then Enter if finished.");
@@ -134,10 +134,14 @@ public Product add() {
 	case 0:
 		do {
 		index = choice;
-		System.out.println("How many would you like?");
+		System.out.println("How many would you like? Maximum is 5");
 		productQuantity = s.nextInt();
-		System.out.println("Storing....");
 		
+		if(productQuantity > 5) {
+			System.out.println("Maximum Quantity is 5");
+		}
+		
+		else {
 		subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
 		itemPrice = productObjectList.get(choice).getProductPrice();
 		
@@ -159,18 +163,24 @@ public Product add() {
 		System.out.println();
 		System.out.printf("Sub Total: "+"$"+"%.2f",s0.getSubTotal());
 		System.out.println();
-		System.out.println("Cart Name: "+s0.getCartName());		
+		System.out.println("Shopping Cart Name: "+s0.getCartName());	
 		}
-		while(productQuantity <= 0);		
+		}
+		while(productQuantity <= 0 || productQuantity > 5);		
 		
 		break;
 	case 1:
 		do {
 			index = choice;
-			System.out.println("How many would you like?");
-			productQuantity = s.nextInt();
-			System.out.println("Storing....");
+			System.out.println("How many would you like? Maximum is 5" );
 			
+			productQuantity = s.nextInt();
+			
+			if(productQuantity > 5) {
+				System.out.println("Maximum Quantity is 5");
+			}
+			
+			else {
 			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
 			itemPrice = productObjectList.get(choice).getProductPrice();
 			
@@ -192,17 +202,22 @@ public Product add() {
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s1.getSubTotal());
 			System.out.println();
-			System.out.println("Cart Name: "+s1.getCartName());			
+			System.out.println("Shopping Cart Name: "+s1.getCartName());			
 			}
-			while(productQuantity <= 0);
+		}
+			while(productQuantity <= 0 || productQuantity > 5);
 		break;
 	case 2:
 		do {
 			index = choice;
-			System.out.println("How many would you like?");
-			productQuantity = s.nextInt();
-			System.out.println("Storing....");
+			System.out.println("How many would you like? Maximum is 5");
+			productQuantity = s.nextInt();			
 			
+			if(productQuantity > 5) {
+				System.out.println("Maximum Quantity is 5");
+			}
+			
+			else {
 			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
 			itemPrice = productObjectList.get(choice).getProductPrice();
 			
@@ -225,17 +240,22 @@ public Product add() {
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s2.getSubTotal());
 			System.out.println();
-			System.out.println("Cart Name: "+s2.getCartName());			
+			System.out.println("Shopping Cart Name: "+s2.getCartName());			
 			}
-			while(productQuantity <= 0);
+		}
+			while(productQuantity <= 0|| productQuantity > 5);
 		break;
 	case 3:
 		do {
 			index = choice;
-			System.out.println("How many would you like?");
+			System.out.println("How many would you like? Maximum is 5");
 			productQuantity = s.nextInt();
-			System.out.println("Storing....");
 			
+			if(productQuantity > 5) {
+				System.out.println("Maximum Quantity is 5");
+			}
+			
+			else {
 			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
 			itemPrice = productObjectList.get(choice).getProductPrice();
 			
@@ -258,17 +278,22 @@ public Product add() {
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s3.getSubTotal());
 			System.out.println();
-			System.out.println("Cart Name: "+s3.getCartName());			
+			System.out.println("Shopping Cart Name: "+s3.getCartName());			
 			}
-			while(productQuantity <= 0);
+		}
+			while(productQuantity <= 0|| productQuantity > 5);
 		break;
 	case 4:
 		do {
 			index = choice;
-			System.out.println("How many would you like?");
-			productQuantity = s.nextInt();
-			System.out.println("Storing....");
+			System.out.println("How many would you like? Maximum is 5");
+			productQuantity = s.nextInt();			
 			
+			if(productQuantity > 5) {
+				System.out.println("Maximum Quantity is 5");
+			}			
+			
+			else {
 			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
 			itemPrice = productObjectList.get(choice).getProductPrice();
 			
@@ -290,17 +315,22 @@ public Product add() {
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s4.getSubTotal());
 			System.out.println();
-			System.out.println("Cart Name: "+s4.getCartName());			
+			System.out.println("Shopping Cart Name: "+s4.getCartName());			
 			}
-			while(productQuantity <= 0);
+		}
+			while(productQuantity <= 0|| productQuantity > 5);
 		break;
 	case 5:
 		do {
 			index = choice;
-			System.out.println("How many would you like?");
-			productQuantity = s.nextInt();
-			System.out.println("Storing....");
+			System.out.println("How many would you like? Maximum is 5");
+			productQuantity = s.nextInt();			
 			
+			if(productQuantity > 5) {
+				System.out.println("Maximum Quantity is 5");
+			}
+			
+			else {
 			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
 			itemPrice = productObjectList.get(choice).getProductPrice();
 			
@@ -323,17 +353,22 @@ public Product add() {
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s5.getSubTotal());
 			System.out.println();
-			System.out.println("Cart Name: "+s5.getCartName());			
+			System.out.println("Shopping Cart Name: "+s5.getCartName());			
 			}
-			while(productQuantity <= 0);
+		}
+			while(productQuantity <= 0|| productQuantity > 5);
 		break;
 	case 6:
 		do {
 			index = choice;
-			System.out.println("How many would you like?");
-			productQuantity = s.nextInt();
-			System.out.println("Storing....");
+			System.out.println("How many would you like? Maximum is 5");
+			productQuantity = s.nextInt();			
 			
+			if(productQuantity > 5) {
+				System.out.println("Maximum Quantity is 5");
+			}
+			
+			else {
 			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
 			itemPrice = productObjectList.get(choice).getProductPrice();
 			
@@ -357,17 +392,22 @@ public Product add() {
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s6.getSubTotal());
 			System.out.println();
-			System.out.println("Cart Name: "+s6.getCartName());			
+			System.out.println("Shopping Cart Name: "+s6.getCartName());			
 			}
-			while(productQuantity <= 0);
+		}
+			while(productQuantity <= 0|| productQuantity > 5);
 		break;
 	case 7:
 		do {
 			index = choice;
-			System.out.println("How many would you like?");
-			productQuantity = s.nextInt();
-			System.out.println("Storing....");
+			System.out.println("How many would you like? Maximum is 5");
+			productQuantity = s.nextInt();			
 			
+			if(productQuantity > 5) {
+				System.out.println("Maximum Quantity is 5");
+			}
+			
+			else {
 			subTotal = productObjectList.get(choice).getProductPrice()*productQuantity;
 			itemPrice = productObjectList.get(choice).getProductPrice();
 			
@@ -378,8 +418,7 @@ public Product add() {
 			s7.setProductName(productObjectList.get(index).getProductName());
 			s7.setItemPrice(itemPrice);
 			s7.setProductQuantity(productQuantity);
-			s7.setSubTotal(subTotal);
-			s7.setCartName(name);
+			s7.setSubTotal(subTotal);			
 			
 			cartList.add(s7); 
 			cartPriceMap.put(s7.getProductName(),s7.getSubTotal()); 			
@@ -390,9 +429,10 @@ public Product add() {
 			System.out.println();
 			System.out.printf("Sub Total: "+"$"+"%.2f",s7.getSubTotal());
 			System.out.println();
-			System.out.println("Cart Name: "+s7.getCartName());			
+			System.out.println("Shopping Cart Name: "+s7.getCartName());			
 			}
-			while(productQuantity <= 0);
+		}
+			while(productQuantity <= 0 || productQuantity > 5);
 		break;
 	case 8:
 		viewAll();
@@ -433,12 +473,15 @@ public List<ShoppingCart> viewAll(){
 	else {
 	System.out.println("********************Contents of Shopping Cart********************"); 
 	int counter = 0;
+	System.out.println("Shopping Cart Name: "+this.getCartName());
 	for(ShoppingCart e: cartList ) {
 		
 		System.out.println("Item Number: "+counter);
 		System.out.println("Product Name: "+e.getProductName());		
 		System.out.println("Quantity: "+e.getProductQuantity());
 		System.out.printf("Price: "+"$"+"%.2f",e.getItemPrice());
+		System.out.println();
+		System.out.printf("Sales Tax: "+"%.2f", salesTax);		
 		System.out.println();
 		
 		counter++;
@@ -463,6 +506,7 @@ public void delete() {
 	}
 	else {
 		System.out.println("********************Contents of Shopping Cart********************"); 
+		System.out.println("Shopping Cart Name: "+this.getCartName());
 		int counter = 0;
 		for(ShoppingCart e: cartList ) {
 			
@@ -501,6 +545,7 @@ byte selection = 0;
 	
 	else {
 	System.out.println("********************Contents of Shopping Cart********************"); 
+	System.out.println("Shopping Cart Name: "+this.getCartName());
 	int counter = 0;
 	int changeAmount = 0;
 	for(ShoppingCart e: cartList ) {
@@ -533,7 +578,7 @@ public void checkOut() {
 	System.out.println("To complete purchase. Please contact cashier and give Shopping Cart ID."+ "\n"+
 						"Your order is ready for pickup. \n"+ "Shopping Cart ID: "+shoppingCartID); 	
 	
-	System.out.println("Cart Name: "+ cartName);
+	System.out.println("Cart Name: "+ this.getCartName());
 	sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i ->i).sum(); 
 	System.out.printf("Sub Total: "+"$"+"%.2f",sumOfSubTotals); 
 	System.out.println();
