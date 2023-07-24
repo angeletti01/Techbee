@@ -15,7 +15,8 @@
 					<release>11</release>
 					<source>11</source>
 					<target>11</target>
-				</configuration>
+					<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+				</configuration>				
 			</plugin>
 		</plugins>
 	</build>
