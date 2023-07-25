@@ -12,8 +12,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ShoppingCart {
 	Scanner s = new Scanner(System.in);
