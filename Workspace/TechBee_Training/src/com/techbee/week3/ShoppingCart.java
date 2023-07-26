@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ShoppingCart {
-	Scanner s = new Scanner(System.in);
+	static Scanner s = new Scanner(System.in);
 	Product p = new Product();
 	Map<String, Double> cartPriceMap = new HashMap<>();
 	List<Product> productObjectList = new ArrayList<>();

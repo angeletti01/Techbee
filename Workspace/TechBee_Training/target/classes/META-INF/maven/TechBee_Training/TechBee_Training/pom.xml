@@ -14,13 +14,19 @@
 				<configuration>
 					<release>11</release>
 					<source>11</source>
-					<target>11</target>
-					<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+					<target>11</target>					
 				</configuration>				
 			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
+	<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.8.2</version>
+    <scope>test</scope>
+</dependency>
 	
 	</dependencies>
 </project>

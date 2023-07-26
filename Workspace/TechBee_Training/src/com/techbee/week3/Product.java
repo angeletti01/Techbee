@@ -44,7 +44,7 @@ public void populateProducts() {
 	productList.add(p4);
 	productList.add(p5);
 	productList.add(p6);
-	productList.add(p7);	
+	productList.add(p7);
 }
 /******************************Boilerplate Code******************************/
 public int getItemID() {
