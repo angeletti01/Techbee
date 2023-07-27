@@ -54,6 +54,7 @@ public Product(int itemID,String productName, double productPrice, String produc
 
 public static void populateProducts() {
 	log.info("populateProducts invoked, total Product objects created: "+productList.size());
+	
 	Product p0 = new Product(0," Gala Apple", .25, " A cross between Kidd�s Orange Red and Golden Delicious, originated in New Zealand!");
 	Product p1 = new Product(1," Golden Delicious Apple", .25, " Yellow with an occasional pink blush, Golden Delicious is Apple Lite loved by those who prefer a mild, sweet flavor.");
 	Product p2 = new Product(2," Granny Smith Apple", .10, " Grannies are known for their distinctive green flesh which sometimes bears a red blush and their very tart flavor.");
