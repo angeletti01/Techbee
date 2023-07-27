@@ -12,8 +12,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
-import org.apache.log4j.BasicConfigurator;  
+ 
 import org.apache.log4j.LogManager;  
 import org.apache.log4j.Logger;
 
