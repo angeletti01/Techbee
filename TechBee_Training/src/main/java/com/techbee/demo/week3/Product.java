@@ -17,12 +17,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 @Entity
 @Table(name="product", schema="techbee")
 public class Product implements Serializable {
 	
 public static List<Product> productList = new ArrayList<>();
-
+private static final Logger log = LogManager.getLogger(Product.class);
 private static final long serialVersionUID = 1L;
 
 @Id
@@ -50,7 +53,7 @@ public Product(int itemID,String productName, double productPrice, String produc
 }
 
 public static void populateProducts() {
-	
+	log.info("populateProducts invoked, total Product objects created: "+productList.size());
 	Product p0 = new Product(0," Gala Apple", .25, " A cross between Kidd�s Orange Red and Golden Delicious, originated in New Zealand!");
 	Product p1 = new Product(1," Golden Delicious Apple", .25, " Yellow with an occasional pink blush, Golden Delicious is Apple Lite loved by those who prefer a mild, sweet flavor.");
 	Product p2 = new Product(2," Granny Smith Apple", .10, " Grannies are known for their distinctive green flesh which sometimes bears a red blush and their very tart flavor.");
