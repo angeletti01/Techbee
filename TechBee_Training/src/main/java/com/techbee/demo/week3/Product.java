@@ -6,14 +6,37 @@
 
 package com.techbee.demo.week3;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product {
-public List<Product> productList = new ArrayList<>();
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="product", schema="techbee")
+public class Product implements Serializable {
+	
+public static List<Product> productList = new ArrayList<>();
+
+private static final long serialVersionUID = 1L;
+
+@Id
+@GeneratedValue(generator = "item_id_seq", strategy = GenerationType.AUTO)
+@Column(name="item_id")
 private int itemID = 0;
+
+@Column(name="product_name")
 private String productName = null;
+
+@Column(name="product_price")
 private double productPrice = 0;
+
+@Column(name="product_details")
 private String productDetails = null;
 
 public Product() {
