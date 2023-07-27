@@ -13,12 +13,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.apache.log4j.BasicConfigurator;  
+import org.apache.log4j.LogManager;  
+import org.apache.log4j.Logger;
+
 public class ShoppingCart {
 	
 	static Scanner s = new Scanner(System.in);	
 	static Map<String, Double> cartPriceMap = new HashMap<>();
 	static List<Product> productObjectList = new ArrayList<>();
 	static List<ShoppingCart> cartList = new ArrayList<>();
+	private static final Logger log = LogManager.getLogger(ShoppingCart.class);
 	static String sChoice = null;
 	static String choice = null;
 	static String decision = null;
@@ -54,13 +59,20 @@ public class ShoppingCart {
 
 	public void initialization() {
 		{
-			System.out.println("Please make a selection then press Enter.");
-			System.out.println("1. Show Sub-Total Balance");
-			System.out.println("2. Add Product");
-			System.out.println("3. Delete Product");
-			System.out.println("4. Edit Cart ");
-			System.out.println("5. Check Out ");
-			System.out.println("6. Exit");
+			log.info("Please make a selection then press Enter.");
+			log.info("1. Show Sub-Total Balance");
+			log.info("2. Add Product");
+			log.info("3. Delete Product");
+			log.info("4. Edit Cart ");
+			log.info("5. Check Out ");
+			log.info("6. Exit");
+//			System.out.println("Please make a selection then press Enter.");
+//			System.out.println("1. Show Sub-Total Balance");
+//			System.out.println("2. Add Product");
+//			System.out.println("3. Delete Product");
+//			System.out.println("4. Edit Cart ");
+//			System.out.println("5. Check Out ");
+//			System.out.println("6. Exit");
 		}
 		
 		sChoice = s.next();
@@ -82,12 +94,14 @@ public class ShoppingCart {
 			checkOut();
 			break;
 		case "6":
-			System.out.println("Thank you for shopping with us. Have a nice day!!!");
+			log.info("Thank you for shopping with us. Have a nice day!!!");
+			//System.out.println("Thank you for shopping with us. Have a nice day!!!");
 			System.exit(0);
 			break;
 
 		default:
-			System.out.println("Invalid Choice! Please try again. \n");
+			log.info("Invalid Choice! Please try again. \n");
+			//System.out.println("Invalid Choice! Please try again. \n");
 			initialization();
 		}
 		s.close();
