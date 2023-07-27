@@ -66,13 +66,7 @@ public class ShoppingCart {
 			log.info("4. Edit Cart ");
 			log.info("5. Check Out ");
 			log.info("6. Exit");
-//			System.out.println("Please make a selection then press Enter.");
-//			System.out.println("1. Show Sub-Total Balance");
-//			System.out.println("2. Add Product");
-//			System.out.println("3. Delete Product");
-//			System.out.println("4. Edit Cart ");
-//			System.out.println("5. Check Out ");
-//			System.out.println("6. Exit");
+
 		}
 		
 		sChoice = s.next();
