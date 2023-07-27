@@ -89,13 +89,13 @@ public class ShoppingCart {
 			break;
 		case "6":
 			log.info("Thank you for shopping with us. Have a nice day!!!");
-			//System.out.println("Thank you for shopping with us. Have a nice day!!!");
+			
 			System.exit(0);
 			break;
 
 		default:
 			log.info("Invalid Choice! Please try again. \n");
-			//System.out.println("Invalid Choice! Please try again. \n");
+			
 			initialization();
 		}
 		s.close();
@@ -105,27 +105,28 @@ public class ShoppingCart {
 		
 		String name = null;		
 		int index = 0;
-
-		System.out.println("Name your Shopping Cart and press Enter");
+		log.info("Name your Shopping Cart and press Enter");
+		
 		name = s.nextLine();
 		this.setCartName(name);
-		System.out.println("Shopping Cart Name: " + this.getCartName());
+		log.info("Shopping Cart Name: " + this.getCartName());
 		Product.populateProducts();
 
 		do {
-			System.out.println("***************************List of Products***************************");
+			log.info("***************************List of Products***************************");
 			for (Product e : Product.productList) {
-				System.out.println("**************" + e.getProductName() + "**************");
-				System.out.println("Item Number: " + e.getItemID());
-				System.out.println("Product Details: " + e.getProductDetails());
+				log.info("**************" + e.getProductName() + "**************");
+				log.info("Item Number: " + e.getItemID());
+				log.info("Product Details: " + e.getProductDetails());
+				log.info("\n");
 				System.out.printf("Product Price:" + "$" + "%.2f", e.getProductPrice());
-				System.out.println();
+				log.info("\n");
 
 				productObjectList.add(e);
 			}		
 
-			System.out.println("Enter item number of the item you want to add to your cart and press Enter.");
-			System.out.println("Type 8 then Enter if finished.");
+			log.info("Enter item number of the item you want to add to your cart and press Enter.");
+			log.info("Type 8 then Enter if finished.");
 
 			try {
 				choice = s.next();
@@ -139,19 +140,19 @@ public class ShoppingCart {
 				case "0":
 					do {
 
-						System.out.println("How many would you like? Maximum is 5");
+						log.info("How many would you like? Maximum is 5");
 						try {
 						productQuantity = s.nextInt();
 						}
 						catch(InputMismatchException i) 
 						{
-							System.out.println("Invalid Input!");
+							log.info("Invalid Input!");
 							add();
 							i.printStackTrace();
 						}
 
 						if (productQuantity > 5) {
-							System.out.println("Maximum Quantity is 5");
+							log.info("Maximum Quantity is 5");
 						}
 
 						else {
@@ -164,12 +165,12 @@ public class ShoppingCart {
 							cartList.add(s0);
 							cartPriceMap.put(s0.getProductName(), s0.getSubTotal());
 
-							System.out.println("Cart ID: " + s0.getCartID());
-							System.out.println("Name: " + s0.getProductName());
+							log.info("Cart ID: " + s0.getCartID());
+							log.info("Name: " + s0.getProductName());
 							System.out.printf("Price: " + "$" + "%.2f", productObjectList.get(index).getProductPrice());
-							System.out.println();
+							log.info("\n");
 							System.out.printf("Sub Total: " + "$" + "%.2f", s0.getSubTotal());
-							System.out.println();
+							log.info("\n");
 							
 						}
 					} while (productQuantity <= 0 || productQuantity > 5);
@@ -177,20 +178,20 @@ public class ShoppingCart {
 					break;
 				case "1":
 					do {
-						System.out.println("How many would you like? Maximum is 5");
+						log.info("How many would you like? Maximum is 5");
 
 						try {
 							productQuantity = s.nextInt();
 							}
 							catch(InputMismatchException i) 
 							{
-								System.out.println("Invalid Input!");
+								log.info("Invalid Input!");
 								add();
 								i.printStackTrace();
 							}
 
 						if (productQuantity > 5) {
-							System.out.println("Maximum Quantity is 5");
+							log.info("Maximum Quantity is 5");
 						}
 
 						else {
@@ -203,31 +204,30 @@ public class ShoppingCart {
 							cartList.add(s1);
 							cartPriceMap.put(s1.getProductName(), s1.getSubTotal());
 
-							System.out.println("Cart ID: " + s1.getCartID());
-							System.out.println("Name: " + s1.getProductName());
+							log.info("Cart ID: " + s1.getCartID());
+							log.info("Name: " + s1.getProductName());
 							System.out.printf("Price: " + "$" + "%.2f", productObjectList.get(index).getProductPrice());
-							System.out.println();
-							System.out.printf("Sub Total: " + "$" + "%.2f", s1.getSubTotal());
-							System.out.println();
-							
+							log.info("\n");
+							System.out.printf("Sub Total: " + "$" + "%.2f", s1.getSubTotal());							
+							log.info("\n");
 						}
 					} while (productQuantity <= 0 || productQuantity > 5);
 					break;
 				case "2":
 					do {
-						System.out.println("How many would you like? Maximum is 5");
+						log.info("How many would you like? Maximum is 5");
 						try {
 							productQuantity = s.nextInt();
 							}
 							catch(InputMismatchException i) 
 							{
-								System.out.println("Invalid Input!");
+								log.info("Invalid Input!");
 								add();
 								i.printStackTrace();
 							}
 
 						if (productQuantity > 5) {
-							System.out.println("Maximum Quantity is 5");
+							log.info("Maximum Quantity is 5");
 						}
 
 						else {
@@ -240,31 +240,31 @@ public class ShoppingCart {
 							cartList.add(s2);
 							cartPriceMap.put(s2.getProductName(), s2.getSubTotal());
 
-							System.out.println("Cart ID: " + s2.getCartID());
-							System.out.println("Name: " + s2.getProductName());
+							log.info("Cart ID: " + s2.getCartID());
+							log.info("Name: " + s2.getProductName());
 							System.out.printf("Price: " + "$" + "%.2f", productObjectList.get(index).getProductPrice());
-							System.out.println();
+							log.info("\n");
 							System.out.printf("Sub Total: " + "$" + "%.2f", s2.getSubTotal());
-							System.out.println();
+							log.info("\n");
 							
 						}
 					} while (productQuantity <= 0 || productQuantity > 5);
 					break;
 				case "3":
 					do {
-						System.out.println("How many would you like? Maximum is 5");
+						log.info("How many would you like? Maximum is 5");
 						try {
 							productQuantity = s.nextInt();
 							}
 							catch(InputMismatchException i) 
 							{
-								System.out.println("Invalid Input!");
+								log.info("Invalid Input!");
 								add();
 								i.printStackTrace();
 							}
 
 						if (productQuantity > 5) {
-							System.out.println("Maximum Quantity is 5");
+							log.info("Maximum Quantity is 5");
 						}
 
 						else {
@@ -277,31 +277,31 @@ public class ShoppingCart {
 							cartList.add(s3);
 							cartPriceMap.put(s3.getProductName(), s3.getSubTotal());
 
-							System.out.println("Cart ID: " + s3.getCartID());
-							System.out.println("Name: " + s3.getProductName());
+							log.info("Cart ID: " + s3.getCartID());
+							log.info("Name: " + s3.getProductName());
 							System.out.printf("Price: " + "$" + "%.2f", productObjectList.get(index).getProductPrice());
-							System.out.println();
+							log.info("\n");
 							System.out.printf("Sub Total: " + "$" + "%.2f", s3.getSubTotal());
-							System.out.println();
+							log.info("\n");
 							
 						}
 					} while (productQuantity <= 0 || productQuantity > 5);
 					break;
 				case "4":
 					do {
-						System.out.println("How many would you like? Maximum is 5");
+						log.info("How many would you like? Maximum is 5");
 						try {
 							productQuantity = s.nextInt();
 							}
 							catch(InputMismatchException i) 
 							{
-								System.out.println("Invalid Input!");
+								log.info("Invalid Input!");
 								add();
 								i.printStackTrace();
 							}
 
 						if (productQuantity > 5) {
-							System.out.println("Maximum Quantity is 5");
+							log.info("Maximum Quantity is 5");
 						}
 
 						else {
@@ -314,31 +314,31 @@ public class ShoppingCart {
 							cartList.add(s4);
 							cartPriceMap.put(s4.getProductName(), s4.getSubTotal());
 
-							System.out.println("Cart ID: " + s4.getCartID());
-							System.out.println("Name: " + s4.getProductName());
+							log.info("Cart ID: " + s4.getCartID());
+							log.info("Name: " + s4.getProductName());
 							System.out.printf("Price: " + "$" + "%.2f", productObjectList.get(index).getProductPrice());
-							System.out.println();
+							log.info("\n");
 							System.out.printf("Sub Total: " + "$" + "%.2f", s4.getSubTotal());
-							System.out.println();
+							log.info("\n");
 							
 						}
 					} while (productQuantity <= 0 || productQuantity > 5);
 					break;
 				case "5":
 					do {
-						System.out.println("How many would you like? Maximum is 5");
+						log.info("How many would you like? Maximum is 5");
 						try {
 							productQuantity = s.nextInt();
 							}
 							catch(InputMismatchException i) 
 							{
-								System.out.println("Invalid Input!");
+								log.info("Invalid Input!");
 								add();
 								i.printStackTrace();
 							}
 
 						if (productQuantity > 5) {
-							System.out.println("Maximum Quantity is 5");
+							log.info("Maximum Quantity is 5");
 						}
 
 						else {
@@ -351,31 +351,31 @@ public class ShoppingCart {
 							cartList.add(s5);
 							cartPriceMap.put(s5.getProductName(), s5.getSubTotal());
 
-							System.out.println("Cart ID: " + s5.getCartID());
-							System.out.println("Name: " + s5.getProductName());
+							log.info("Cart ID: " + s5.getCartID());
+							log.info("Name: " + s5.getProductName());
 							System.out.printf("Price: " + "$" + "%.2f", productObjectList.get(index).getProductPrice());
-							System.out.println();
+							log.info("\n");
 							System.out.printf("Sub Total: " + "$" + "%.2f", s5.getSubTotal());
-							System.out.println();
+							log.info("\n");
 							
 						}
 					} while (productQuantity <= 0 || productQuantity > 5);
 					break;
 				case "6":
 					do {
-						System.out.println("How many would you like? Maximum is 5");
+						log.info("How many would you like? Maximum is 5");
 						try {
 							productQuantity = s.nextInt();
 							}
 							catch(InputMismatchException i) 
 							{
-								System.out.println("Invalid Input!");
+								log.info("Invalid Input!");
 								add();
 								i.printStackTrace();
 							}
 
 						if (productQuantity > 5) {
-							System.out.println("Maximum Quantity is 5");
+							log.info("Maximum Quantity is 5");
 						}
 
 						else {
@@ -388,31 +388,31 @@ public class ShoppingCart {
 							cartList.add(s6);
 							cartPriceMap.put(s6.getProductName(), s6.getSubTotal());
 
-							System.out.println("Cart ID: " + s6.getCartID());
-							System.out.println("Name: " + s6.getProductName());
+							log.info("Cart ID: " + s6.getCartID());
+							log.info("Name: " + s6.getProductName());
 							System.out.printf("Price: " + "$" + "%.2f", productObjectList.get(index).getProductPrice());
-							System.out.println();
+							log.info("\n");
 							System.out.printf("Sub Total: " + "$" + "%.2f", s6.getSubTotal());
-							System.out.println();
+							log.info("\n");
 							
 						}
 					} while (productQuantity <= 0 || productQuantity > 5);
 					break;
 				case "7":
 					do {
-						System.out.println("How many would you like? Maximum is 5");
+						log.info("How many would you like? Maximum is 5");
 						try {
 							productQuantity = s.nextInt();
 							}
 							catch(InputMismatchException i) 
 							{
-								System.out.println("Invalid Input!");
+								log.info("Invalid Input!");
 								add();
 								i.printStackTrace();
 							}
 
 						if (productQuantity > 5) {
-							System.out.println("Maximum Quantity is 5");
+							log.info("Maximum Quantity is 5");
 						}
 
 						else {
@@ -425,12 +425,12 @@ public class ShoppingCart {
 							cartList.add(s7);
 							cartPriceMap.put(s7.getProductName(), s7.getSubTotal());
 
-							System.out.println("Cart ID: " + s7.getCartID());
-							System.out.println("Name: " + s7.getProductName());
+							log.info("Cart ID: " + s7.getCartID());
+							log.info("Name: " + s7.getProductName());
 							System.out.printf("Price: " + "$" + "%.2f", productObjectList.get(index).getProductPrice());
-							System.out.println();
+							log.info("\n");
 							System.out.printf("Sub Total: " + "$" + "%.2f", s7.getSubTotal());
-							System.out.println();
+							log.info("\n");
 							
 						}
 					} while (productQuantity <= 0 || productQuantity > 5);
@@ -440,11 +440,11 @@ public class ShoppingCart {
 					break;
 
 				default:
-					System.out.println("You have selected an invalid item...");
+					log.info("You have selected an invalid item...");
 					break;
 				}
 
-				System.out.println("Are you finished shopping? Please enter yes or no then press Enter");
+				log.info("Are you finished shopping? Please enter yes or no then press Enter");
 
 				decision = s.next().toLowerCase();
 
@@ -454,7 +454,7 @@ public class ShoppingCart {
 				} else if (decision.equals("no")) {
 					isDone = false;
 				} else {
-					System.out.println("Incorrect input...");
+					log.info("Incorrect input...");
 					isDone = false;
 				}
 			
@@ -466,22 +466,23 @@ public class ShoppingCart {
 	public List<ShoppingCart> viewAll() {
 
 		if (cartList.isEmpty()) {
-			System.out.println("There is nothing in the Shopping Cart! \n");
+			log.info("There is nothing in the Shopping Cart! \n");
 			initialization();
 		} 
 		else {
-			System.out.println("********************Contents of Shopping Cart********************");
+			log.info("********************Contents of Shopping Cart********************");
 			int counter = 0;
-			System.out.println("Shopping Cart Name: " + this.getCartName());
+			log.info("Shopping Cart Name: " + this.getCartName());
 			for (ShoppingCart e : cartList) {
 
-				System.out.println("Item Number: " + counter);
-				System.out.println("Product Name: " + e.getProductName());
-				System.out.println("Quantity: " + e.getProductQuantity());
+				log.info("Item Number: " + counter);
+				log.info("Product Name: " + e.getProductName());
+				log.info("Quantity: " + e.getProductQuantity());
+				log.info("\n");
 				System.out.printf("Price: " + "$" + "%.2f", e.getItemPrice());
-				System.out.println();
+				log.info("\n");
 				System.out.printf("Sales Tax: " + "%.2f", salesTax);
-				System.out.println("\n");
+				log.info("\n");
 
 				counter++;
 			}
@@ -489,7 +490,7 @@ public class ShoppingCart {
 			sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i -> i).sum();
 
 			System.out.printf("Sub Total: " + "$" + "%.2f", sumOfSubTotals);
-			System.out.println("\n");
+			log.info("\n");
 
 			initialization();
 			s.close();
@@ -502,33 +503,33 @@ public class ShoppingCart {
 		int counter = 0;
 		
 		if (cartList.isEmpty()) {
-			System.out.println("There is nothing in the Shopping Cart \n");
+			log.info("There is nothing in the Shopping Cart \n");
 			initialization();
 		} else {
-			System.out.println("********************Contents of Shopping Cart********************");
-			System.out.println("Shopping Cart Name: " + this.getCartName());
+			log.info("********************Contents of Shopping Cart********************");
+			log.info("Shopping Cart Name: " + this.getCartName());
 			
 			for (ShoppingCart e : cartList) {
 
-				System.out.println("Item Number: " + counter);
-				System.out.println("Product Name: " + e.getProductName());
-				System.out.println("Quantity: " + e.getProductQuantity());
+				log.info("Item Number: " + counter);
+				log.info("Product Name: " + e.getProductName());
+				log.info("Quantity: " + e.getProductQuantity());
 
 				counter++;
 			}	
 			
-				System.out.println("Select Item Number of the Item to Delete then Press Enter.");
+				log.info("Select Item Number of the Item to Delete then Press Enter.");
 				try {
 				selection = s.nextInt();
 				}
 				catch (InputMismatchException|NumberFormatException|IndexOutOfBoundsException e) {
-					System.out.println("Invalid Choice!");
+					log.info("Invalid Choice!");
 					initialization();
 					e.printStackTrace();
 				}
 				
 				if (selection > cartList.size() || selection < 0) {
-					System.out.println("Incorrect value, please try again! \n");
+					log.info("Incorrect value, please try again! \n");
 					initialization();
 				} 
 				else {
@@ -537,7 +538,7 @@ public class ShoppingCart {
 						cartPriceMap.remove(cartList.get(selection).productName);
 						cartList.remove(selection);
 
-						System.out.println("Item Deleted!");
+						log.info("Item Deleted!");
 						viewAll();
 
 					} while (selection > cartList.size() || selection < 0);
@@ -552,31 +553,31 @@ public class ShoppingCart {
 		int changeAmount = 0;
 		
 		if (cartList.isEmpty()) {
-			System.out.println("There is nothing in the Shopping Cart! \n");
+			log.info("There is nothing in the Shopping Cart! \n");
 			initialization();
 		}
 
 		else {
-			System.out.println("********************Contents of Shopping Cart********************");
-			System.out.println("Shopping Cart Name: " + cartName);
+			log.info("********************Contents of Shopping Cart********************");
+			log.info("Shopping Cart Name: " + cartName);
 			
 			for (ShoppingCart e : cartList) {
 
-				System.out.println("Item Number: " + counter);
-				System.out.println("Product Name: " + e.getProductName());
-				System.out.println("Quantity: " + e.getProductQuantity());
+				log.info("Item Number: " + counter);
+				log.info("Product Name: " + e.getProductName());
+				log.info("Quantity: " + e.getProductQuantity());
 
 				counter++;
 			}
 			try {
-				System.out.println("Select Item Number of the quantity to change then Press Enter.");
+				log.info("Select Item Number of the quantity to change then Press Enter.");
 				selection = s.nextInt();
 			} catch (IndexOutOfBoundsException|InputMismatchException  i) {
-				System.out.println("Invalid Selection!");				
+				log.info("Invalid Selection!");				
 				add();
 				i.printStackTrace();
 			}
-				System.out.println("Enter the new quantity of the item then press Enter.");
+				log.info("Enter the new quantity of the item then press Enter.");
 				changeAmount = s.nextInt();
 				subTotal = cartList.get(selection).getItemPrice() * changeAmount;
 				cartList.get(selection).productQuantity = changeAmount;
@@ -588,22 +589,24 @@ public class ShoppingCart {
 	public void checkOut() {
 
 		if (cartList.isEmpty()) {
-			System.out.println("There is nothing in the Shopping Cart \n");
+			log.info("There is nothing in the Shopping Cart \n");
 			initialization();
 		} else {
-			System.out.println("To complete purchase. Please contact cashier and give Shopping Cart ID." + "\n"
+			log.info("To complete purchase. Please contact cashier and give Shopping Cart ID." + "\n"
 					+ "Your order is ready for pickup. \n" + "Shopping Cart ID: " + invoiceID);
 
-			System.out.println("Cart Name: " + this.getCartName());
+			log.info("Cart Name: " + this.getCartName());
+			log.info("\n");
 			sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i -> i).sum();
 			System.out.printf("Sub Total: " + "$" + "%.2f", sumOfSubTotals);
-			System.out.println();
+			log.info("\n");
 			System.out.printf("Sales Tax: " + "%.2f", salesTax);
-			System.out.println();
+			log.info("\n");
 			total = sumOfSubTotals + (sumOfSubTotals * salesTax);
 			this.setTotal(total);
 			System.out.printf("Total Amount: " + "$" + "%.2f", this.getTotal());
-			System.out.println("\n Have a great day!");
+			log.info("\n");
+			log.info("\n Have a great day!");
 			invoiceID++;
 			cartPriceMap.clear();
 			cartList.clear();
