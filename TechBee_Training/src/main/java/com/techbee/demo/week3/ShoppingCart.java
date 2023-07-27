@@ -14,12 +14,17 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ShoppingCart {
-	static Scanner s = new Scanner(System.in);
-	Product p = new Product();
-	Map<String, Double> cartPriceMap = new HashMap<>();
-	List<Product> productObjectList = new ArrayList<>();
-	List<ShoppingCart> cartList = new ArrayList<>();
-	private long shoppingCartID = 100;
+	
+	static Scanner s = new Scanner(System.in);	
+	static Map<String, Double> cartPriceMap = new HashMap<>();
+	static List<Product> productObjectList = new ArrayList<>();
+	static List<ShoppingCart> cartList = new ArrayList<>();
+	static String sChoice = null;
+	static String choice = null;
+	static String decision = null;
+	static int selection = 0;
+	
+	private long invoiceID = 100;
 	private int cartID = 0;
 	private double subTotal = 0;
 	private double total = 0;
@@ -30,10 +35,7 @@ public class ShoppingCart {
 	private boolean isDone = false;
 	private double sumOfSubTotals = 0;
 	private double itemPrice = 0;
-	String sChoice = null;
-	String choice = null;
-	String decision = null;
-	int selection = 0;
+	
 
 	public ShoppingCart() {
 		super();
@@ -60,8 +62,7 @@ public class ShoppingCart {
 			System.out.println("5. Check Out ");
 			System.out.println("6. Exit");
 		}
-
-		Scanner s = new Scanner(System.in);
+		
 		sChoice = s.next();
 
 		switch (sChoice) {
@@ -92,7 +93,7 @@ public class ShoppingCart {
 		s.close();
 	}
 
-	public Product add() throws NumberFormatException, InputMismatchException {
+	public void add() throws NumberFormatException, InputMismatchException {
 		
 		String name = null;		
 		int index = 0;
@@ -101,11 +102,11 @@ public class ShoppingCart {
 		name = s.nextLine();
 		this.setCartName(name);
 		System.out.println("Shopping Cart Name: " + this.getCartName());
-		p.populateProducts();
+		Product.populateProducts();
 
 		do {
 			System.out.println("***************************List of Products***************************");
-			for (Product e : p.productList) {
+			for (Product e : Product.productList) {
 				System.out.println("**************" + e.getProductName() + "**************");
 				System.out.println("Item Number: " + e.getItemID());
 				System.out.println("Product Details: " + e.getProductDetails());
@@ -451,8 +452,7 @@ public class ShoppingCart {
 			
 		} while (isDone == false);
 
-		s.close();
-		return p;
+		s.close();		
 	}
 
 	public List<ShoppingCart> viewAll() {
@@ -584,7 +584,7 @@ public class ShoppingCart {
 			initialization();
 		} else {
 			System.out.println("To complete purchase. Please contact cashier and give Shopping Cart ID." + "\n"
-					+ "Your order is ready for pickup. \n" + "Shopping Cart ID: " + shoppingCartID);
+					+ "Your order is ready for pickup. \n" + "Shopping Cart ID: " + invoiceID);
 
 			System.out.println("Cart Name: " + this.getCartName());
 			sumOfSubTotals = cartPriceMap.values().stream().mapToDouble(i -> i).sum();
@@ -596,7 +596,7 @@ public class ShoppingCart {
 			this.setTotal(total);
 			System.out.printf("Total Amount: " + "$" + "%.2f", this.getTotal());
 			System.out.println("\n Have a great day!");
-			shoppingCartID++;
+			invoiceID++;
 			cartPriceMap.clear();
 			cartList.clear();
 			s.close();
@@ -650,15 +650,15 @@ public class ShoppingCart {
 
 	public void setCartName(String cartName) {
 		this.cartName = cartName;
-	}
-
+	}		
+	
 	public boolean isDone() {
 		return isDone;
 	}
 
 	public void setDone(boolean isDone) {
 		this.isDone = isDone;
-	}
+	}	
 
 	public double getSumOfSubTotals() {
 		return sumOfSubTotals;
@@ -676,12 +676,12 @@ public class ShoppingCart {
 		this.itemPrice = itemPrice;
 	}
 
-	public long getShoppingCartID() {
-		return shoppingCartID;
+	public long getInvoiceID() {
+		return invoiceID;
 	}
 
-	public void setShoppingCartID(long shoppingCartID) {
-		this.shoppingCartID = shoppingCartID;
+	public void setInvoiceID(long invoiceID) {
+		this.invoiceID = invoiceID;
 	}
 
 	public double getTotal() {
@@ -694,7 +694,7 @@ public class ShoppingCart {
 
 	@Override
 	public String toString() {
-		return "ShoppingCart [shoppingCartID=" + shoppingCartID + ", cartID=" + cartID + ", subTotal=" + subTotal
+		return "ShoppingCart [shoppingCartID=" + invoiceID + "cartID=" + cartID + ", subTotal=" + subTotal
 				+ ", total=" + total + ", salesTax=" + salesTax + ", productQuantity=" + productQuantity
 				+ ", productName=" + productName + ", cartName=" + cartName + ", isDone=" + isDone + ", sumOfSubTotals="
 				+ sumOfSubTotals + ", itemPrice=" + itemPrice + "]";

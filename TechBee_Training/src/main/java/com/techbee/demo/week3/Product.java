@@ -49,7 +49,7 @@ public Product(int itemID,String productName, double productPrice, String produc
 	this.productPrice = productPrice;
 }
 
-public void populateProducts() {
+public static void populateProducts() {
 	
 	Product p0 = new Product(0," Gala Apple", .25, " A cross between Kidd�s Orange Red and Golden Delicious, originated in New Zealand!");
 	Product p1 = new Product(1," Golden Delicious Apple", .25, " Yellow with an occasional pink blush, Golden Delicious is Apple Lite loved by those who prefer a mild, sweet flavor.");
