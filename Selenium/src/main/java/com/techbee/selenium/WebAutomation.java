@@ -2,6 +2,7 @@ package com.techbee.selenium;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.SocketException;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -44,38 +45,33 @@ public class WebAutomation {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
 		// identify element by Xpath
-		//WebElement t = driver.findElement(By.cssSelector("#item46cd015ddf > div > div.s-item__info.clearfix > a > div"));
-		//WebElement p = driver.findElement(By.cssSelector("#item46cd015ddf > div > div.s-item__info.clearfix > div.s-item__details.clearfix > div:nth-child(1) > span"));
-		
-		//List<WebElement> titleList = driver.findElements(By.cssSelector("#item46cd015ddf > div > div.s-item__info.clearfix > a > div"));
-		//List<WebElement> priceList = driver.findElements(By.cssSelector("#item46cd015ddf > div > div.s-item__info.clearfix > div.s-item__details.clearfix > div:nth-child(1) > span"));
-		
+				
 		List<WebElement> titleList = driver.findElements(By.className("s-item__title"));
-		List<WebElement> priceList = driver.findElements(By.className("s-item__price"));
-		
-		// obtain text
-		//String title = t.getText();
-		//String price = p.getText();
+		List<WebElement> priceList = driver.findElements(By.className("s-item__price"));		
 		
 		//Write text to File
 		File f = new File("C:\\Users\\RSquared\\Desktop\\Folders\\Work Folder\\Techbee Solutions\\Assignments\\Week 4\\savetext.txt");
+		log.info("File Created");
 		try {
+			
 		for(int i =0; i<titleList.size();i++) {
 			String x = titleList.get(i).getText();
-			FileUtils.write(f, x, true);
-			FileUtils.write(f, "\n", true);
+			log.info(x);
+			FileUtils.write(f, x,true);
+			FileUtils.write(f, "\n", true);			
 			String y = priceList.get(i).getText();
+			log.info(y);
 			FileUtils.write(f, y, true);
+			log.info("\n");
 			FileUtils.write(f, "\n", true);
 		}
 		}
 		catch(IOException i) {
 			i.printStackTrace();
-		}
-		finally {
-			driver.close();
-		}
-			
+		}		
+		driver.close();
+		driver.quit(); 
+	
 		}
 //		
 }
