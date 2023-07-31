@@ -1,77 +1,128 @@
 package com.techbee.selenium;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.SocketException;
-import java.nio.charset.Charset;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.commons.io.FileUtils;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 public class WebAutomation {
-	
-	private static final Logger log = LogManager.getLogger(WebAutomation.class);
-	
-	public static WebDriver driver = new ChromeDriver();
-	 ChromeOptions options = new ChromeOptions();
 
-	
-	public static void main(String... args) throws IOException {
+    private static final Logger log = LogManager.getLogger(WebAutomation.class);
+    private static final File f = new File("C:\\\\Users\\\\RSquared\\\\Desktop\\\\Folders\\\\Work Folder\\\\Techbee Solutions\\\\Assignments\\\\Week 4\\\\savetext.txt");
+    public static WebDriver driver1 = initializeChromeDriver();
+    public static WebDriver driver2 = initializeChromeDriver();
+    
+    public static WebDriver initializeChromeDriver() {
+        // Configure Chrome options if needed (e.g., headless mode)
+        ChromeOptions options = new ChromeOptions();
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       // driver.manage().window().maximize();
+        return driver;
+    }
 
-		log.info("Program Starting");
-		
-		// Puts an Implicit wait, Will wait for 10 seconds before throwing exception
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
-		// Launch website
-		driver.navigate().to("http://www.ebay.com/");
-				
-		// Maximize the browser
-		driver.manage().window().maximize();
-		
-		// Enter value Iphone in Search Field
-		driver.findElement(By.id("gh-ac")).sendKeys("iphone");
-				
-		// Click on Submit Button
-		driver.findElement(By.id("gh-btn")).click();
-		
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		
-		// identify element by Xpath
-				
-		List<WebElement> titleList = driver.findElements(By.className("s-item__title"));
-		List<WebElement> priceList = driver.findElements(By.className("s-item__price"));		
-		
-		//Write text to File
-		File f = new File("C:\\Users\\RSquared\\Desktop\\Folders\\Work Folder\\Techbee Solutions\\Assignments\\Week 4\\savetext.txt");
-		log.info("File Created");
-		try {
-			
-		for(int i =0; i<titleList.size();i++) {
-			String x = titleList.get(i).getText();
-			log.info(x);
-			FileUtils.write(f, x,true);
-			FileUtils.write(f, "\n", true);			
-			String y = priceList.get(i).getText();
-			log.info(y);
-			FileUtils.write(f, y, true);
-			log.info("\n");
-			FileUtils.write(f, "\n", true);
-		}
-		}
-		catch(IOException i) {
-			i.printStackTrace();
-		}		
-		driver.close();
-		driver.quit(); 
-	
-		}
-//		
+    public static void writeToFile(String text) throws IOException {
+        FileUtils.write(f, text, Charset.defaultCharset(), true);
+    }
+
+    public static void testEbay(WebDriver driver) {
+        log.info("Ebay Test Started......");
+        driver.navigate().to("http://www.ebay.com/");
+        driver.findElement(By.id("gh-ac")).sendKeys("iphone");
+        driver.findElement(By.id("gh-btn")).click();
+        driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        List<WebElement> titleList = driver.findElements(By.className("s-item__title"));
+        List<WebElement> priceList = driver.findElements(By.className("s-item__price"));
+
+        try {
+            FileUtils.write(f, "***** Ebay *****", Charset.defaultCharset(), true);
+            log.info(titleList.size());  
+            for (int i = 0; i < titleList.size(); i++) {
+                String x = titleList.get(i).getText();
+                log.info(x);
+                FileUtils.write(f, x + "\n", Charset.defaultCharset(), true);
+                Thread.sleep(200);
+                String y = priceList.get(i).getText();
+                log.info(y);
+                FileUtils.write(f, y + "\n", Charset.defaultCharset(), true);
+            }
+        } catch (IOException | InterruptedException i) {
+            i.printStackTrace();
+        }
+    }
+
+    public static void testTarget(WebDriver driver) {
+        log.info("Target Test Started......");
+        driver.navigate().to("http://www.target.com/");
+        driver.findElement(By.id("search")).sendKeys("iphone");
+        driver.findElement(By.xpath("//*[@id=\"headerPrimary\"]/div[6]/form/button[2]")).click();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().deleteAllCookies();
+        
+        //List<WebElement> titleList2 = driver.findElements(By.className("styles__Truncate-sc-1wcknu2-0"));      
+       // List<WebElement> titleList2 = driver.findElements(By.className("styles__StyledRowWrapper-sc-z8946b-1"));
+        //List<WebElement> titleList2 = driver.findElements(By.xpath("//*[@id=\"pageBodyContainer\"]"));
+        //List<WebElement> titleList2 = driver.findElements(By.cssSelector("a[data-test='product-title']"));        
+        List<WebElement> titleList2 = driver.findElements(By.className("styles__StyledRowWrapper-sc-z8946b-1")); 
+        //List<WebElement> titleList2 = driver.findElements(By.xpath("//*[@class='styles__Truncate-sc-1wcknu2-0 hcXfc']"));
+       // List<WebElement> titleList2 = driver.findElements(By.xpath("//div[title='iPhone']"));       
+       
+        //List<WebElement> titleList2 = driver.findElements(By.xpath("//*[contains(@class,'h-display-flex') and contains(@class,'h-flex-justify-space-between')]")); 
+        List<WebElement> priceList2 = driver.findElements(By.className("current-price"));
+        List<String> title = new ArrayList<>();
+        List<String> price = new ArrayList<>();
+      
+        try {        	
+            FileUtils.write(f, "***** Target *****", Charset.defaultCharset(), true);
+            log.info(priceList2.size()); 
+            for (int i =0;i <titleList2.size();i++) {
+                String x2 = titleList2.get(i).getText();
+                log.info(x2);
+                FileUtils.write(f, x2 + "\n", Charset.defaultCharset(), true);
+                Thread.sleep(200);
+                String y2 = priceList2.get(i).getText();
+                log.info(y2);
+                FileUtils.write(f, y2 + "\n", Charset.defaultCharset(), true);
+               
+            }
+//            log.info("Storing titles"); 
+//            for(WebElement e:titleList2) {
+//            	title.add(e.getText());            	
+//            }
+//            log.info("Storing prices"); 
+//            for(WebElement e:priceList2) {
+//            	price.add(e.getText());
+//            }
+//            log.info("Writing to File"); 
+//            for(int i =0;i<title.size();i++) 
+//            {
+//            	log.info(title.get(i));
+//            	FileUtils.write(f, title.get(i) + "\n", Charset.defaultCharset(), true);
+//            	log.info(price.get(i));
+//            	FileUtils.write(f, price.get(i) + "\n", Charset.defaultCharset(), true);
+//            }            
+          
+        } catch (IOException |IndexOutOfBoundsException | InterruptedException i) {
+            i.printStackTrace();
+        }
+    }
+
+    public static void main(String... args) throws IOException {
+            testEbay(driver1);
+            driver1.close();
+            testTarget(driver2);
+            driver2.close();
+            
+    }
 }
