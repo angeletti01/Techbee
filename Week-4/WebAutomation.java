@@ -4,13 +4,16 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.SocketException;
 import java.nio.charset.Charset;
-
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -18,16 +21,15 @@ public class WebAutomation {
 
 	private static final Logger log = LogManager.getLogger(WebAutomation.class);
 	private static final File f = new File(
-			"C:\\\\Users\\\\RSquared\\\\Desktop\\\\Folders\\\\Work Folder\\\\Techbee Solutions\\\\Assignments\\\\Week 4\\\\savetext.txt");
-	public static WebDriver driver1 = initializeChromeDriver();
-	public static WebDriver driver2 = initializeChromeDriver();
+			"C:\\workspace\\Techbee\\Techbee\\Selenium\\src\\main\\resources\\data.txt");
+	public static WebDriver driverInit = initializeChromeDriver();	
 
 	public static WebDriver initializeChromeDriver() {
-		// Configure Chrome options if needed (e.g., headless mode)
-		ChromeOptions options = new ChromeOptions();
-		WebDriver driver = new ChromeDriver(options);
+		
+		EdgeOptions options = new EdgeOptions();
+		WebDriver driver = new EdgeDriver(options);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+		driver.manage().window().maximize();
 		return driver;
 	}
 
@@ -41,60 +43,64 @@ public class WebAutomation {
 		driver.findElement(By.id("gh-ac")).sendKeys("iphone");
 		driver.findElement(By.id("gh-btn")).click();
 		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");	
 		List<WebElement> titleList = driver.findElements(By.className("s-item__title"));
 		List<WebElement> priceList = driver.findElements(By.className("s-item__price"));
 
 		try {
-			FileUtils.write(f, "***** Ebay *****", Charset.defaultCharset(), true);
+			FileUtils.write(f, "***** Ebay *****", Charset.defaultCharset(), true);			
 			log.info(titleList.size());
 			for (int i = 0; i < titleList.size(); i++) {
 				String x = titleList.get(i).getText();
 				log.info(x);
-				FileUtils.write(f, x + "\n", Charset.defaultCharset(), true);
-				Thread.sleep(200);
+				FileUtils.write(f, x + "- ", Charset.defaultCharset(), true);
 				String y = priceList.get(i).getText();
 				log.info(y);
 				FileUtils.write(f, y + "\n", Charset.defaultCharset(), true);
 			}
-		} catch (IOException | InterruptedException i) {
+		} catch (IOException i) {
 			i.printStackTrace();
 		}
 	}
 
-	public static void testTarget(WebDriver driver) {
-		log.info("Target Test Started......");
-		driver.navigate().to("http://www.target.com/");
+	public static void testTarget(WebDriver driver) throws InterruptedException{
+		log.info("Target Test Started......");		
+		driver.navigate().to("http://www.target.com/");	
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		driver.findElement(By.id("search")).sendKeys("iphone");
-		driver.findElement(By.xpath("//*[@id=\"headerPrimary\"]/div[6]/form/button[2]")).click();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//*[@id=\"headerPrimary\"]/div[6]/form/button[2]")).click();			
+		Thread.sleep(2000); 
 		driver.manage().deleteAllCookies();
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");			
 
-		List<WebElement> titleList2 = driver.findElements(By.className("styles__StyledRowWrapper-sc-z8946b-1"));
-		List<WebElement> priceList2 = driver.findElements(By.className("current-price"));
 		try {
+			FileUtils.write(f, "\n", Charset.defaultCharset(), true);
 			FileUtils.write(f, "***** Target *****", Charset.defaultCharset(), true);
-			log.info(priceList2.size());
-			for (int i = 0; i < titleList2.size(); i++) {
-				String x2 = titleList2.get(i).getText();
-				log.info(x2);
-				FileUtils.write(f, x2 + "\n", Charset.defaultCharset(), true);
-				Thread.sleep(200);
-				String y2 = priceList2.get(i).getText();
-				log.info(y2);
-				FileUtils.write(f, y2 + "\n", Charset.defaultCharset(), true);
+			FileUtils.write(f, "\n", Charset.defaultCharset(), true);			
+			List<WebElement> waitTitle = new WebDriverWait(driver, Duration.ofSeconds(2),Duration.ofSeconds(2)).until(
+					ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("a[data-test='product-title']")));		
+			List<WebElement> waitPrice = new WebDriverWait(driver, Duration.ofSeconds(2)).until(ExpectedConditions
+					.presenceOfAllElementsLocatedBy(By.cssSelector("span[data-test='current-price']")));			
+			log.info("Writing to File");
+
+			for (int i = 0; i < waitTitle.size(); i++) {
+				log.info(waitTitle.get(i).getText());
+				FileUtils.write(f, waitTitle.get(i).getText() + "- ", Charset.defaultCharset(), true);
+				log.info(waitPrice.get(i).getText());
+				FileUtils.write(f, waitPrice.get(i).getText() + "\n", Charset.defaultCharset(), true);
 			}
 
-		} catch (IOException | IndexOutOfBoundsException | InterruptedException i) {
+		} catch (IOException i) {
 			i.printStackTrace();
 		}
 	}
 
-	public static void main(String... args) throws IOException {
-		testEbay(driver1);
-		driver1.close();
-		testTarget(driver2);
-		driver2.close();
+	public static void main(String... args) throws InterruptedException {
+		 testEbay(driverInit);		
+		 testTarget(driverInit);
+		 driverInit.quit();
 	}
 }
