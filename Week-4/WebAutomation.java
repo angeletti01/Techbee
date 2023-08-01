@@ -25,9 +25,9 @@ public class WebAutomation {
 	private static final Logger log = LogManager.getLogger(WebAutomation.class);
 	private static final File f = new File(
 			"C:\\workspace\\Techbee\\Techbee\\Selenium\\src\\main\\resources\\data.txt");
-	public static WebDriver driverInit = initializeChromeDriver();	
+	public static WebDriver driverInit = initializeEdgeDriver();	
 
-	public static WebDriver initializeChromeDriver() {
+	public static WebDriver initializeEdgeDriver() {
 		
 		EdgeOptions options = new EdgeOptions();
 		WebDriver driver = new EdgeDriver(options);
