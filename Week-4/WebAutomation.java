@@ -3,6 +3,7 @@ package com.techbee.selenium;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -11,9 +12,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.SocketException;
+
 import java.nio.charset.Charset;
+
 import java.time.Duration;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -31,11 +34,7 @@ public class WebAutomation {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		return driver;
-	}
-
-	public static void writeToFile(String text) throws IOException {
-		FileUtils.write(f, text, Charset.defaultCharset(), true);
-	}
+	}	
 
 	public static void testEbay(WebDriver driver) {
 		log.info("Ebay Test Started......");
