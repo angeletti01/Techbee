@@ -47,8 +47,7 @@ public class ShoppingCartController {
 	 
 	 @PutMapping("/update-cart")
 	 public ResponseEntity<ShoppingCart> updateShoppingCart(@RequestBody ShoppingCart shoppingCart, @RequestParam ("cartItemID") int cartItemID){
-		 shopCartServ.deleteShoppingCartItem(cartItemID);
-		 //product.setItemID(itemID); // not updating itemID in DB, possibly because auto generated
+		 shopCartServ.deleteShoppingCartItem(cartItemID);		
 		 ShoppingCart updateItem = shopCartServ.updateShoppingCart(shoppingCart);
 		 return new ResponseEntity<>(updateItem,HttpStatus.OK);
 	 }
