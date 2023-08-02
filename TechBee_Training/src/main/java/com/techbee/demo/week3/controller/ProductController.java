@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techbee.demo.week3.Product;
@@ -36,8 +37,8 @@ public class ProductController {
 	 return new ResponseEntity<>(product,HttpStatus.OK);
 	 }
 	 
-	 @GetMapping("find-product-by-id/{itemID}")
-	 public ResponseEntity<Product> findProductById(@PathVariable("itemID") int itemID){
+	 @GetMapping("find-product-by-id")
+	 public ResponseEntity<Product> findProductById(@RequestParam("itemID") int itemID){
 		 Product product = productService.findProductById(itemID);
 		 return new ResponseEntity<>(product, HttpStatus.OK);
 	 }
@@ -49,13 +50,15 @@ public class ProductController {
 	 }
 	 
 	 @PutMapping("/update-product")
-	 public ResponseEntity<Product> updateProduct(@RequestBody Product product){
+	 public ResponseEntity<Product> updateProduct(@RequestBody Product product, @RequestParam ("itemID") int itemID){
+		 productService.deleteProduct(itemID);
+		 //product.setItemID(itemID); // not updating itemID in DB, possibly because auto generated
 		 Product updateProduct = productService.updateProduct(product);
 		 return new ResponseEntity<>(updateProduct,HttpStatus.OK);
 	 }
 	 
-	 @DeleteMapping("/delete-employee/{itemID}")
-	 public ResponseEntity<?> deleteEmployee(@PathVariable("itemID") int itemID){
+	 @DeleteMapping("/delete-product")
+	 public ResponseEntity<Product> deleteProduct(@RequestParam ("itemID") int itemID){
 		productService.deleteProduct(itemID);
 		return new ResponseEntity<>(HttpStatus.OK);
 	 }
