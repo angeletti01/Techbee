@@ -6,6 +6,7 @@
 
 package com.techbee.demo.week5.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,14 +27,9 @@ import org.apache.log4j.Logger;
 
 @Entity
 @Table(name="shopping_cart", schema="techbee")
-public class ShoppingCart {
+public class ShoppingCart implements Serializable {
 	
-	static Scanner s = new Scanner(System.in);	
-	static Map<String, Double> cartPriceMap = new HashMap<>();
-	static List<Product> productObjectList = new ArrayList<>();	
-	static List<ShoppingCart> cartList = new ArrayList<>();	
-	private static final Logger log = LogManager.getLogger(ShoppingCart.class);
-		
+	private static final long serialVersionUID = 1L;		
 	
 	@Id
 	@GeneratedValue(generator = "cart_id_seq", strategy = GenerationType.IDENTITY)
@@ -65,7 +61,7 @@ public class ShoppingCart {
 	}
 
 	public ShoppingCart(String productName, double itemPrice, int productQuantity, double subTotal, String cartName,
-			int cartID) {
+			int cartID, int invoiceID, double salesTax, int total) {
 		super();
 		this.productName = productName;
 		this.productQuantity = productQuantity;
@@ -73,6 +69,9 @@ public class ShoppingCart {
 		this.cartName = cartName;
 		this.cartID = cartID;
 		this.itemPrice = itemPrice;
+		this.invoiceID = invoiceID;
+		this.salesTax = salesTax;
+		this.total = total;
 	}	
 	
 	
