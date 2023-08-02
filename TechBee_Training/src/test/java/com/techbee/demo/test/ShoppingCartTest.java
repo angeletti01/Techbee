@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 //import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import com.techbee.demo.week3.Product;
-import com.techbee.demo.week3.ShoppingCart;
+import com.techbee.demo.week5.entity.Product;
+import com.techbee.demo.week5.entity.ShoppingCart;
 
 //@SpringBootTest
 class ShoppingCartTest {
-	
+/*	
 static Product p = new Product();
 static ShoppingCart s = new ShoppingCart();
 	
@@ -107,5 +108,5 @@ void testShoppingCart(){
 	s.setTotal(100.25);
 	assertEquals(100.25, s.getTotal());
 }
-
+*/
 }

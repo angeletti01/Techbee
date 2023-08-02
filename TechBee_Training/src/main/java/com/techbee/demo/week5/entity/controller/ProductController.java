@@ -1,4 +1,4 @@
-package com.techbee.demo.week3.controller;
+package com.techbee.demo.week5.entity.controller;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.techbee.demo.week3.Product;
-import com.techbee.demo.week3.service.ProductService;
+import com.techbee.demo.week5.entity.Product;
+import com.techbee.demo.week5.entity.service.ProductService;
 
 @RestController
 @CrossOrigin(origins ="http://localhost:4200")
