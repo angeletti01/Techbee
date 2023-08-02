@@ -7,11 +7,6 @@
 package com.techbee.demo.week5.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,9 +17,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.apache.log4j.LogManager;  
-import org.apache.log4j.Logger;
-
 @Entity
 @Table(name="shopping_cart", schema="techbee")
 public class ShoppingCart implements Serializable {
@@ -32,9 +24,9 @@ public class ShoppingCart implements Serializable {
 	private static final long serialVersionUID = 1L;		
 	
 	@Id
-	@GeneratedValue(generator = "cart_id_seq", strategy = GenerationType.IDENTITY)
-	@Column(name = "cart_id")
-	private int cartID = 0;	
+	@GeneratedValue(generator = "cart_item_id_seq", strategy = GenerationType.IDENTITY)
+	@Column(name = "cart_item_id")
+	private int cartItemID = 0;	
 	@Column(name = "invoice_id")
 	private long invoiceID = 0;		
 	@Column(name = "total")
@@ -53,7 +45,7 @@ public class ShoppingCart implements Serializable {
 	private String productName = null;	
 	
 	@OneToOne
-	@PrimaryKeyJoinColumn(name = "cart_id")
+	@PrimaryKeyJoinColumn(name = "cart_item_id")
 	Product product;
 	
 	public ShoppingCart() {
@@ -61,13 +53,13 @@ public class ShoppingCart implements Serializable {
 	}
 
 	public ShoppingCart(String productName, double itemPrice, int productQuantity, double subTotal, String cartName,
-			int cartID, int invoiceID, double salesTax, int total) {
+			int cartItemID, int invoiceID, double salesTax, int total) {
 		super();
 		this.productName = productName;
 		this.productQuantity = productQuantity;
 		this.subTotal = subTotal;
 		this.cartName = cartName;
-		this.cartID = cartID;
+		this.cartItemID = cartItemID;
 		this.itemPrice = itemPrice;
 		this.invoiceID = invoiceID;
 		this.salesTax = salesTax;
@@ -76,11 +68,11 @@ public class ShoppingCart implements Serializable {
 	
 	
 	public int getCartID() {
-		return cartID;
+		return cartItemID;
 	}
 
 	public void setCartID(int cartID) {
-		this.cartID = cartID;
+		this.cartItemID = cartID;
 	}
 
 	public double getSubTotal() {
@@ -149,7 +141,7 @@ public class ShoppingCart implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ShoppingCart [cartID=" + cartID + ", invoiceID=" + invoiceID + ", total=" + total + ", salesTax="
+		return "ShoppingCart [cartItemID=" + cartItemID + ", invoiceID=" + invoiceID + ", total=" + total + ", salesTax="
 				+ salesTax + ", cartName=" + cartName + ", subTotal=" + subTotal + ", itemPrice=" + itemPrice
 				+ ", productQuantity=" + productQuantity + ", productName=" + productName + ", product=" + product
 				+ "]";
