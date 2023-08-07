@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Failed suite [Failed suite [Test-Suite]]]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Ebay Test(failed)(failed)(failed)">
+    <classes>
+      <class name="com.techbee.selenium.TestNG">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="main"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- com.techbee.selenium.TestNG -->
+    </classes>
+  </test> <!-- Ebay Test(failed)(failed)(failed) -->
+</suite> <!-- Failed suite [Failed suite [Failed suite [Test-Suite]]] -->
