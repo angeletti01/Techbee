@@ -21,7 +21,7 @@ public class EbayHomePage extends EbaySearchTest {
 	
 	public WebDriver driver;
 	private static final Logger log = LogManager.getLogger(EbayHomePage.class);
-	private static final File f = new File("C:\\workspace\\Techbee\\Techbee\\Selenium\\src\\main\\resources\\data.txt");
+	private static final File f = new File("C:\\workspace\\Techbee\\Techbee\\Selenium_2\\src\\test\\resources\\data.txt");
 	private String itemSearch = null;
 
 	public EbayHomePage(WebDriver driver) {
