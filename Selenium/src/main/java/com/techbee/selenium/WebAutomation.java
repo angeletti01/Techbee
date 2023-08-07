@@ -5,6 +5,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,17 +27,21 @@ public class WebAutomation {
 	private static final Logger log = LogManager.getLogger(WebAutomation.class);
 	private static final File f = new File(
 			"C:\\workspace\\Techbee\\Techbee\\Selenium\\src\\main\\resources\\data.txt");
+	
 	public static WebDriver driverInit = initializeChromeDriver();	
-
+	
 	public static WebDriver initializeChromeDriver() {
 		
 		EdgeOptions options = new EdgeOptions();
 		WebDriver driver = new EdgeDriver(options);
+		//ChromeOptions options = new ChromeOptions();
+		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\RSquared\\Desktop\\Folders\\Programs\\chromedriver.exe");
+		//WebDriver driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		return driver;
 	}	
-
+	
 	public static void testEbay(WebDriver driver) {
 		log.info("Ebay Test Started......");
 		driver.navigate().to("http://www.ebay.com/");
@@ -63,7 +69,7 @@ public class WebAutomation {
 			i.printStackTrace();
 		}
 	}
-
+	
 	public static void testTarget(WebDriver driver) throws InterruptedException{
 		log.info("Target Test Started......");		
 		driver.navigate().to("http://www.target.com/");	
