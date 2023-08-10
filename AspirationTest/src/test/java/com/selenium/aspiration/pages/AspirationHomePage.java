@@ -19,5 +19,6 @@ public AspirationHomePage(WebDriver driver) {
 }
 @FindBy(how = How.XPATH, using = "/html/body/div[5]/div/div/div/div[2]/a")
 WebElement signInButton; // getting started button
-
+@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/footer/div/div/div[3]/div/div[1]/ul/li[2]/a")
+WebElement individualSolutionsLink;
 }
