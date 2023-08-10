@@ -1,5 +1,7 @@
 package com.selenium.aspiration.tests;
 
-public class AspirationTest {
+
+
+public class AspirationTest extends TestBase{
 
 }
