@@ -42,8 +42,7 @@ public class EbayHomePage extends EbaySearchTest {
 		submitButton.click();
 	}
 
-	public void saveToFile() {
-		
+	public void saveToFile() {		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)"); // scrolls down
 
