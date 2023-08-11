@@ -11,7 +11,7 @@ import com.selenium.aspiration.pages.AspirationHomePage;
 
 public class AspirationTest extends TestBase{
 
-	@Test
+	@Test	
 	@Ignore
 	public void testViewProducts() {
 		AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);
@@ -22,16 +22,15 @@ public class AspirationTest extends TestBase{
 		Assert.assertEquals(aspAcct.getProducts().size()-1, 2); // check the number of products in page				
 	}
 	
-	@Test
+	@Test	
 	@Ignore
 	public void testSignIn() {
 		AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);		
-		aspHome.clickSignInButton();
-		
+		aspHome.clickSignInButton();		
 	}
 	
 	@Test
-	@Ignore
+	
 	public void testGettingStarted() {
 		AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);
 		String email = System.getenv("DUMMYEMAIL");
@@ -49,6 +48,26 @@ public class AspirationTest extends TestBase{
 	agap.storeCosts();
 	Assert.assertEquals(agap.getAspirationPlusMonthly(), "$7.99/mo");
 	Assert.assertEquals(agap.getAspirationPlusYearly(), "$5.99/mo if you pay annually");
+	}
+	
+	@Test
+	@Ignore
+	public void testIsOptionsChecked() {
+		AspirationGetAccountPage agap = PageFactory.initElements(driver, AspirationGetAccountPage.class);
+		AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);
+		aspHome.clickIndividualSolution();
+		agap.isOptionChecked();		
+		
+		// check 8th option
+		Assert.assertEquals(agap.getAspPlus().get(0), true);
+		Assert.assertEquals(agap.getAsp().get(0), false);
+		// check 9th option
+		Assert.assertEquals(agap.getAspPlus().get(1), true);
+		Assert.assertEquals(agap.getAsp().get(1), false);
+		// check 10th option
+		Assert.assertEquals(agap.getAspPlus().get(2), true);
+		Assert.assertEquals(agap.getAsp().get(2), false);
+		
 	}
 	
 }

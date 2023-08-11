@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +23,8 @@ public class AspirationGetAccountPage extends AspirationTest{
 	private String aspirationPlusYearly = null; // for storing text value from web element
 	private String aspirationPlusMonthly = null; // for storing text value from web element
 	private List<String> products = new ArrayList<>(); // store the products
+	private List<Boolean> aspPlus = new ArrayList<>();
+	private List<Boolean> asp = new ArrayList<>();
 	
 	public AspirationGetAccountPage(WebDriver driver) {
 		this.driver = driver;
@@ -36,8 +40,7 @@ public class AspirationGetAccountPage extends AspirationTest{
 	WebElement card2;
 	@FindBy(how = How.CLASS_NAME, using = "jahYLK")
 	List<WebElement> cards;
-//	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/div[1]/div[2]/div[2]/p[1]/text()[1]")
-//	WebElement priceMonthly;
+	
 	
 	public void viewProducts() {
 		log.info("Inside viewProducts");
@@ -61,10 +64,84 @@ public class AspirationGetAccountPage extends AspirationTest{
 	}
 	
 	public void storeCosts() {
+		log.info("Inside storeCosts");
 		log.info("AspirationPlus Annual Cost per Month: "+aspirationPYearly.getText());
 		log.info("AspirationPlus Monthly Cost: " +aspirationPMonthly.getText());
 		this.setAspirationPlusMonthly(aspirationPMonthly.getText());
 		this.setAspirationPlusYearly(aspirationPMonthly.getText());
+	}
+	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[8]/div[1]/div[2]")
+	WebElement aspirationOption1;
+	@FindBy(how = How.CLASS_NAME, using = "Image-sc-it4irs-0")
+	WebElement aspirationOptionImage;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[9]/div[1]/div[2]")
+	WebElement aspirationOption2;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[10]/div[1]/div[2]")
+	WebElement aspirationOption3;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[8]/div[1]/div[3]")
+	WebElement aspirationPlusOption1;
+	@FindBy(how = How.CLASS_NAME, using = "Image-sc-it4irs-0")
+	WebElement aspirationPlusOptionImage;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[9]/div[1]/div[3]")
+	WebElement aspirationPlusOption2;
+//	@FindBy(how = How.XPATH, using = "Image-sc-it4irs-0")
+//	WebElement aspirationPlusOption2Image;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[10]/div[1]/div[3]")
+	WebElement aspirationPlusOption3;
+//	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[10]/div[1]/div[3]/img")
+//	WebElement aspirationPlusOption3Image;
+	public void isOptionChecked() {
+		log.info("Inside isOptionChecked");
+		
+		try {
+		boolean aspirationPlusVisible = aspirationPlusOption1.findElement(By.className("Image-sc-it4irs-0")).isDisplayed();		
+		this.setAspPlus(aspirationPlusVisible);
+		log.info(aspirationPlusVisible);	
+		}catch(NoSuchElementException e) {
+			log.info("No Element Found");
+			this.setAsp(false);
+		}
+		try {
+			boolean aspirationVisible = aspirationOption1.findElement(By.className("Image-sc-it4irs-0")).isDisplayed();			
+			this.setAsp(aspirationVisible);
+			log.info(aspirationVisible);		
+		}catch(NoSuchElementException e) {
+			log.info("No Element Found");
+			this.setAsp(false);
+		}
+		try {
+			boolean aspirationPlusVisible = aspirationPlusOption2.findElement(By.className("Image-sc-it4irs-0")).isDisplayed();		
+			this.setAspPlus(aspirationPlusVisible);
+			log.info(aspirationPlusVisible);	
+			}catch(NoSuchElementException e) {
+				log.info("No Element Found");
+				this.setAsp(false);
+			}
+			try {
+				boolean aspirationVisible = aspirationOption2.findElement(By.className("Image-sc-it4irs-0")).isDisplayed();			
+				this.setAsp(aspirationVisible);
+				log.info(aspirationVisible);		
+			}catch(NoSuchElementException e) {
+				log.info("No Element Found");
+				this.setAsp(false);
+			}
+			try {
+				boolean aspirationPlusVisible = aspirationPlusOption3.findElement(By.className("Image-sc-it4irs-0")).isDisplayed();		
+				this.setAspPlus(aspirationPlusVisible);
+				log.info(aspirationPlusVisible);	
+				}catch(NoSuchElementException e) {
+					log.info("No Element Found");
+					this.setAsp(false);
+				}
+				try {
+					boolean aspirationVisible = aspirationOption3.findElement(By.className("Image-sc-it4irs-0")).isDisplayed();			
+					this.setAsp(aspirationVisible);
+					log.info(aspirationVisible);		
+				}catch(NoSuchElementException e) {
+					log.info("No Element Found");
+					this.setAsp(false);
+				}
+		
 	}
 	
 	public String getAspirationPlusYearly() {
@@ -84,6 +161,23 @@ public class AspirationGetAccountPage extends AspirationTest{
 	}
 	public void setProducts(List<String> products) {
 		this.products = products;
+	}
+
+	public List<Boolean> getAspPlus() {
+		return aspPlus;
+	}
+
+	public void setAspPlus(Boolean aspPlus) {
+		this.aspPlus.add(aspPlus);
+	}
+
+	public List<Boolean> getAsp() {
+		return asp;
+	}
+
+	public void setAsp(Boolean asp) {
+		this.asp.add(asp);
 	}	
+	
 	
 }

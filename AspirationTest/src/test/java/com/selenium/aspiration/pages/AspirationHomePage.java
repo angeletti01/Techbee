@@ -38,14 +38,14 @@ WebElement emailField;
 public void clickIndividualSolution() {
 	log.info("Inside clickIndividualSolution");	
 	individualSolutionsLink.click();
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 }
 
 public void clickSignInButton() {
 	log.info("Inside clickSignInButton");
 	
 	signInButton.click();	
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 }
 
 public void clickGettingStartedButton() {
@@ -53,12 +53,12 @@ public void clickGettingStartedButton() {
 	getStartedButton1.click();
 	//emailField.sendKeys("rkhunlimited@yahoo.com");
 	//getStartedButton2.click();
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
 	
 }
 public void clickGettingStartedButton2() {
 	log.info("Inside of clickGettingStartedButton2");
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	getStartedButton2.click();	
 	log.info(driver.getCurrentUrl());
 
