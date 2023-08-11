@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Failed suite [Test-Suite]]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Page Object Model Project(failed)(failed)">
+<suite name="Failed suite [Test-Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Page Object Model Project(failed)">
     <classes>
       <class name="com.techbee.selenium.testng.tests.EbaySearchTest">
         <methods>
@@ -11,5 +11,5 @@
         </methods>
       </class> <!-- com.techbee.selenium.testng.tests.EbaySearchTest -->
     </classes>
-  </test> <!-- Page Object Model Project(failed)(failed) -->
-</suite> <!-- Failed suite [Failed suite [Test-Suite]] -->
+  </test> <!-- Page Object Model Project(failed) -->
+</suite> <!-- Failed suite [Test-Suite] -->

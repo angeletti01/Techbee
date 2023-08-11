@@ -5,7 +5,7 @@
     <classes>
       <class name="com.selenium.aspiration.tests.AspirationTest">
         <methods>
-          <include name="testGettingStarted"/>
+          <include name="testIsOptionsChecked"/>
           <include name="initialize"/>
           <include name="afterMethod"/>
         </methods>

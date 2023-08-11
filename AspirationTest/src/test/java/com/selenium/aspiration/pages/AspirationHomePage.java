@@ -2,7 +2,6 @@ package com.selenium.aspiration.pages;
 
 import com.selenium.aspiration.tests.AspirationTest;
 
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
@@ -11,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AspirationHomePage extends AspirationTest {
 public WebDriver driver;
@@ -38,30 +35,23 @@ WebElement emailField;
 public void clickIndividualSolution() {
 	log.info("Inside clickIndividualSolution");	
 	individualSolutionsLink.click();
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 }
-
 public void clickSignInButton() {
-	log.info("Inside clickSignInButton");
-	
+	log.info("Inside clickSignInButton");	
 	signInButton.click();	
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 }
-
 public void clickGettingStartedButton() {
 	log.info("Inside of clickGettingStartedButton");
-	getStartedButton1.click();
-	//emailField.sendKeys("rkhunlimited@yahoo.com");
-	//getStartedButton2.click();
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
-	
+	getStartedButton1.click();	
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);		
 }
 public void clickGettingStartedButton2() {
 	log.info("Inside of clickGettingStartedButton2");
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	getStartedButton2.click();	
 	log.info(driver.getCurrentUrl());
-
 }
 
 public String getEmail() {

@@ -9,9 +9,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-
-import com.selenium.aspiration.pages.AspirationHomePage;
 
 public class TestBase {
 public static WebDriver driver = null;
@@ -23,7 +20,7 @@ public void initialize() {
 	driver = new EdgeDriver(options);
 	driver.get("https://www.aspiration.com");
 	driver.manage().window().maximize();
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 }
 
 @AfterMethod
