@@ -1,6 +1,5 @@
 package com.selenium.aspiration.tests;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
@@ -11,36 +10,28 @@ import com.selenium.aspiration.pages.AspirationHomePage;
 
 public class AspirationTest extends TestBase{
 
-	@Test	
-	@Ignore
+	@Test		
 	public void testViewProducts() {
 		AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);
-		AspirationGetAccountPage aspAcct = PageFactory.initElements(driver, AspirationGetAccountPage.class);
-		
+		AspirationGetAccountPage aspAcct = PageFactory.initElements(driver, AspirationGetAccountPage.class);		
 		aspHome.clickIndividualSolution();	
 		aspAcct.viewProducts();
-		Assert.assertEquals(aspAcct.getProducts().size()-1, 2); // check the number of products in page				
-	}
-	
+		Assert.assertEquals(aspAcct.getProducts().size()-1, 2); // check the number of products in page	minus initial index			
+	}	
 	@Test	
-	@Ignore
 	public void testSignIn() {
 		AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);		
 		aspHome.clickSignInButton();		
-	}
-	
-	@Test
-	
+	}	
+	@Test	
 	public void testGettingStarted() {
 		AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);
 		String email = System.getenv("DUMMYEMAIL");
 		aspHome.clickGettingStartedButton();
 		aspHome.setEmail(email);
 		aspHome.clickGettingStartedButton2();		
-	}
-	
-	@Test
-	@Ignore
+	}	
+	@Test	
 	public void testProductPrices() {
 	AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);
 	AspirationGetAccountPage agap = PageFactory.initElements(driver, AspirationGetAccountPage.class);
@@ -48,10 +39,8 @@ public class AspirationTest extends TestBase{
 	agap.storeCosts();
 	Assert.assertEquals(agap.getAspirationPlusMonthly(), "$7.99/mo");
 	Assert.assertEquals(agap.getAspirationPlusYearly(), "$5.99/mo if you pay annually");
-	}
-	
-	@Test
-	@Ignore
+	}	
+	@Test	
 	public void testIsOptionsChecked() {
 		AspirationGetAccountPage agap = PageFactory.initElements(driver, AspirationGetAccountPage.class);
 		AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);
@@ -66,8 +55,7 @@ public class AspirationTest extends TestBase{
 		Assert.assertEquals(agap.getAsp().get(1), false);
 		// check 10th option
 		Assert.assertEquals(agap.getAspPlus().get(2), true);
-		Assert.assertEquals(agap.getAsp().get(2), false);
-		
+		Assert.assertEquals(agap.getAsp().get(2), false);		
 	}
 	
 }

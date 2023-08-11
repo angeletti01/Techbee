@@ -6,8 +6,6 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +29,7 @@ public class AspirationGetAccountPage extends AspirationTest{
 		
 	}
 	@FindBy(how = How.XPATH, using ="//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/div[1]/div[2]/div[2]/p[2]")
-	WebElement aspirationPYearly; // need to extract text from this source
+	WebElement aspirationPYearly; 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/div[1]/div[2]/div[2]/p[1]")
 	WebElement aspirationPMonthly;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/div[1]/div[1]/div[1]/span")
@@ -39,8 +37,7 @@ public class AspirationGetAccountPage extends AspirationTest{
 	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/div[1]/div[2]/div[1]/span" )
 	WebElement card2;
 	@FindBy(how = How.CLASS_NAME, using = "jahYLK")
-	List<WebElement> cards;
-	
+	List<WebElement> cards;	
 	
 	public void viewProducts() {
 		log.info("Inside viewProducts");
@@ -51,8 +48,7 @@ public class AspirationGetAccountPage extends AspirationTest{
 			index++;
 		}
 		this.setProducts(products);		
-	}
-	
+	}	
 	public void storeProducts() {
 		log.info("Inside storeProducts");
 		log.info(cards.size()); // display the number of products
@@ -61,8 +57,7 @@ public class AspirationGetAccountPage extends AspirationTest{
 		this.products.add(card1.getText());
 		this.products.add(card2.getText());
 		log.info("List of Products: "+products);
-	}
-	
+	}	
 	public void storeCosts() {
 		log.info("Inside storeCosts");
 		log.info("AspirationPlus Annual Cost per Month: "+aspirationPYearly.getText());
@@ -84,12 +79,9 @@ public class AspirationGetAccountPage extends AspirationTest{
 	WebElement aspirationPlusOptionImage;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[9]/div[1]/div[3]")
 	WebElement aspirationPlusOption2;
-//	@FindBy(how = How.XPATH, using = "Image-sc-it4irs-0")
-//	WebElement aspirationPlusOption2Image;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[10]/div[1]/div[3]")
 	WebElement aspirationPlusOption3;
-//	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/ul/li[10]/div[1]/div[3]/img")
-//	WebElement aspirationPlusOption3Image;
+
 	public void isOptionChecked() {
 		log.info("Inside isOptionChecked");
 		
@@ -140,8 +132,7 @@ public class AspirationGetAccountPage extends AspirationTest{
 				}catch(NoSuchElementException e) {
 					log.info("No Element Found");
 					this.setAsp(false);
-				}
-		
+				}		
 	}
 	
 	public String getAspirationPlusYearly() {
@@ -162,19 +153,15 @@ public class AspirationGetAccountPage extends AspirationTest{
 	public void setProducts(List<String> products) {
 		this.products = products;
 	}
-
 	public List<Boolean> getAspPlus() {
 		return aspPlus;
 	}
-
 	public void setAspPlus(Boolean aspPlus) {
 		this.aspPlus.add(aspPlus);
 	}
-
 	public List<Boolean> getAsp() {
 		return asp;
 	}
-
 	public void setAsp(Boolean asp) {
 		this.asp.add(asp);
 	}	
