@@ -36,6 +36,8 @@ public class AspirationGetAccountPage extends AspirationTest{
 	WebElement card2;
 	@FindBy(how = How.CLASS_NAME, using = "jahYLK")
 	List<WebElement> cards;
+//	@FindBy(how = How.XPATH, using = "//*[@id=\"__next\"]/div/div[4]/section[2]/div/div[1]/div[1]/div[2]/div[2]/p[1]/text()[1]")
+//	WebElement priceMonthly;
 	
 	public void viewProducts() {
 		log.info("Inside viewProducts");
@@ -61,6 +63,8 @@ public class AspirationGetAccountPage extends AspirationTest{
 	public void storeCosts() {
 		log.info("AspirationPlus Annual Cost per Month: "+aspirationPYearly.getText());
 		log.info("AspirationPlus Monthly Cost: " +aspirationPMonthly.getText());
+		this.setAspirationPlusMonthly(aspirationPMonthly.getText());
+		this.setAspirationPlusYearly(aspirationPMonthly.getText());
 	}
 	
 	public String getAspirationPlusYearly() {

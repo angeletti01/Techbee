@@ -41,8 +41,14 @@ public class AspirationTest extends TestBase{
 	}
 	
 	@Test
+	@Ignore
 	public void testProductPrices() {
-		
+	AspirationHomePage aspHome = PageFactory.initElements(driver, AspirationHomePage.class);
+	AspirationGetAccountPage agap = PageFactory.initElements(driver, AspirationGetAccountPage.class);
+	aspHome.clickIndividualSolution();	
+	agap.storeCosts();
+	Assert.assertEquals(agap.getAspirationPlusMonthly(), "$7.99/mo");
+	Assert.assertEquals(agap.getAspirationPlusYearly(), "$5.99/mo if you pay annually");
 	}
 	
 }
