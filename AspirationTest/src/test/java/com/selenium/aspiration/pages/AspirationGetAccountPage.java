@@ -37,6 +37,17 @@ public class AspirationGetAccountPage extends AspirationTest{
 	@FindBy(how = How.CLASS_NAME, using = "jahYLK")
 	List<WebElement> cards;
 	
+	public void viewProducts() {
+		log.info("Inside viewProducts");
+		int index = 0;
+		for(WebElement e:cards) {			
+			log.info("Product: "+(index)+"-"+e.getText());
+			products.add(e.getText());
+			index++;
+		}
+		this.setProducts(products);		
+	}
+	
 	public void storeProducts() {
 		log.info("Inside storeProducts");
 		log.info(cards.size()); // display the number of products

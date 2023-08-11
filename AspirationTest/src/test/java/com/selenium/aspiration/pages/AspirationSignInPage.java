@@ -27,6 +27,19 @@ public class AspirationSignInPage extends AspirationTest {
 	WebElement passwordField;
 	@FindBy(how = How.XPATH, using ="//*[@id=\"content-area\"]/div/div/div/div[2]/form/fieldset/div[3]/button/svg")
 	WebElement loginButton;
+
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 
 }
