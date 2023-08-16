@@ -3,7 +3,7 @@
 <suite name = "Aspiration Test-Suite">
 <test thread-count="5" name = "Page Object Model Project">
 <classes>
-<class name = "com.selenium.aspiration.tests.TestBase"/>
+<class name = "com.selenium.aspiration.utility.TestBase"/>
 <class name = "com.selenium.aspiration.tests.AspirationTest"/>
 </classes>
 </test>

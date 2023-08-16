@@ -2,68 +2,68 @@
 <testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-11T16:32:37 EDT" name="Aspiration Test-Suite" finished-at="2023-08-11T16:33:31 EDT" duration-ms="53780">
+  <suite started-at="2023-08-15T16:20:57 EDT" name="Aspiration Test-Suite" finished-at="2023-08-15T16:21:54 EDT" duration-ms="57375">
     <groups>
     </groups>
-    <test started-at="2023-08-11T16:32:37 EDT" name="Page Object Model Project" finished-at="2023-08-11T16:33:31 EDT" duration-ms="53780">
+    <test started-at="2023-08-15T16:20:57 EDT" name="Page Object Model Project" finished-at="2023-08-15T16:21:54 EDT" duration-ms="57375">
       <class name="com.selenium.aspiration.tests.AspirationTest">
-        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:32:37 EDT" name="initialize" finished-at="2023-08-11T16:32:45 EDT" duration-ms="8096" status="PASS">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:20:57 EDT" name="initialize" finished-at="2023-08-15T16:21:07 EDT" duration-ms="9561" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="testGettingStarted()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:32:45 EDT" name="testGettingStarted" finished-at="2023-08-11T16:32:46 EDT" duration-ms="690" status="PASS">
+        <test-method signature="testGettingStarted()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:07 EDT" name="testGettingStarted" finished-at="2023-08-15T16:21:07 EDT" duration-ms="492" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGettingStarted -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:32:46 EDT" name="afterMethod" finished-at="2023-08-11T16:32:46 EDT" duration-ms="506" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:07 EDT" name="afterMethod" finished-at="2023-08-15T16:21:08 EDT" duration-ms="345" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:32:46 EDT" name="initialize" finished-at="2023-08-11T16:32:52 EDT" duration-ms="5370" status="PASS">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:08 EDT" name="initialize" finished-at="2023-08-15T16:21:13 EDT" duration-ms="5371" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="testIsOptionsChecked()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:32:52 EDT" name="testIsOptionsChecked" finished-at="2023-08-11T16:33:09 EDT" duration-ms="17626" status="PASS">
+        <test-method signature="testIsOptionsChecked()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:13 EDT" name="testIsOptionsChecked" finished-at="2023-08-15T16:21:31 EDT" duration-ms="17829" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testIsOptionsChecked -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:09 EDT" name="afterMethod" finished-at="2023-08-11T16:33:09 EDT" duration-ms="269" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:31 EDT" name="afterMethod" finished-at="2023-08-15T16:21:31 EDT" duration-ms="304" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:09 EDT" name="initialize" finished-at="2023-08-11T16:33:14 EDT" duration-ms="4682" status="PASS">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:31 EDT" name="initialize" finished-at="2023-08-15T16:21:36 EDT" duration-ms="4748" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="testProductPrices()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:14 EDT" name="testProductPrices" finished-at="2023-08-11T16:33:16 EDT" duration-ms="1743" status="PASS">
+        <test-method signature="testProductPrices()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:36 EDT" name="testProductPrices" finished-at="2023-08-15T16:21:38 EDT" duration-ms="2424" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testProductPrices -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:16 EDT" name="afterMethod" finished-at="2023-08-11T16:33:16 EDT" duration-ms="261" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:38 EDT" name="afterMethod" finished-at="2023-08-15T16:21:38 EDT" duration-ms="270" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:16 EDT" name="initialize" finished-at="2023-08-11T16:33:21 EDT" duration-ms="4669" status="PASS">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:38 EDT" name="initialize" finished-at="2023-08-15T16:21:44 EDT" duration-ms="5132" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="testSignIn()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:21 EDT" name="testSignIn" finished-at="2023-08-11T16:33:23 EDT" duration-ms="2294" status="PASS">
+        <test-method signature="testSignIn()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:44 EDT" name="testSignIn" finished-at="2023-08-15T16:21:46 EDT" duration-ms="2838" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSignIn -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:23 EDT" name="afterMethod" finished-at="2023-08-11T16:33:23 EDT" duration-ms="312" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:46 EDT" name="afterMethod" finished-at="2023-08-15T16:21:47 EDT" duration-ms="251" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:23 EDT" name="initialize" finished-at="2023-08-11T16:33:28 EDT" duration-ms="4568" status="PASS">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:47 EDT" name="initialize" finished-at="2023-08-15T16:21:51 EDT" duration-ms="4519" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="testViewProducts()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:28 EDT" name="testViewProducts" finished-at="2023-08-11T16:33:30 EDT" duration-ms="2345" status="PASS">
+        <test-method signature="testViewProducts()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:51 EDT" name="testViewProducts" finished-at="2023-08-15T16:21:54 EDT" duration-ms="3022" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testViewProducts -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c86a017]" started-at="2023-08-11T16:33:30 EDT" name="afterMethod" finished-at="2023-08-11T16:33:31 EDT" duration-ms="282" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.selenium.aspiration.tests.AspirationTest@5c7bfdc1]" started-at="2023-08-15T16:21:54 EDT" name="afterMethod" finished-at="2023-08-15T16:21:54 EDT" duration-ms="223" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
