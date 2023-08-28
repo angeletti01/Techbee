@@ -18,4 +18,54 @@ public class Catalog {
 	@Column(name ="name")
 	private String name;
 	
+	public Catalog() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Catalog(Long catalogId, Long skuId, String type, String name) {
+		super();
+		this.catalogId = catalogId;
+		this.skuId = skuId;
+		this.type = type;
+		this.name = name;
+	}
+
+	public Long getCatalogId() {
+		return catalogId;
+	}
+
+	public void setCatalogId(Long catalogId) {
+		this.catalogId = catalogId;
+	}
+
+	public Long getSkuId() {
+		return skuId;
+	}
+
+	public void setSkuId(Long skuId) {
+		this.skuId = skuId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Catalog [catalogId=" + catalogId + ", skuId=" + skuId + ", type=" + type + ", name=" + name + "]";
+	}	
+	
 }
