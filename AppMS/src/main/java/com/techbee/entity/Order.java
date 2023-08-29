@@ -24,7 +24,7 @@ public class Order {
 	@Column(name = "customer_id")
 	private String customerId;
 	@Column(name = "items")
-	private Item[] items;	
+	private Item items[];	
 	@Column(name = "status")
 	private String status;
 	@Column(name = "complete")
@@ -42,13 +42,13 @@ public class Order {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Order(int id, int orderId, String customerId, Item[] items, String status, boolean complete,
+	public Order(int id, int orderId, String customerId, Item items[], String status, boolean complete,
 			Address shippingAddress, Shipment[] shipments) {
 		super();
 		this.id = id;
 		this.orderId = orderId;
 		this.customerId = customerId;
-		this.items = items;
+		this.items[id] = items[id];
 		this.status = status;
 		this.complete = complete;
 		this.shippingAddress = shippingAddress;
@@ -79,8 +79,8 @@ public class Order {
 		this.customerId = customerId;
 	}
 
-	public Item[] getItems() {
-		return items;
+	public Item getItems(int itemId) {
+		return items[itemId];
 	}
 
 	public void setItems(Item[] items) {
@@ -111,8 +111,8 @@ public class Order {
 		this.shippingAddress = shippingAddress;
 	}
 
-	public Shipment[] getShipments() {
-		return shipments;
+	public Shipment getShipments(int shippingId) {
+		return shipments[shippingId];
 	}
 
 	public void setShipments(Shipment[] shipments) {
@@ -121,9 +121,9 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", orderId=" + orderId + ", customerId=" + customerId + ", items="
-				+ Arrays.toString(items) + ", status=" + status + ", complete=" + complete + ", shippingAddress="
-				+ shippingAddress + ", shipments=" + Arrays.toString(shipments) + "]";
+		return "Order [id=" + id + ", orderId=" + orderId + ", customerId=" + customerId + ", items=" + items
+				+ ", status=" + status + ", complete=" + complete + ", shippingAddress=" + shippingAddress
+				+ ", shipments=" + Arrays.toString(shipments) + "]";
 	}	
 	
 }
