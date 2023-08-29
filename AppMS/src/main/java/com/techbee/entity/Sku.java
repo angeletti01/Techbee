@@ -6,11 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "sku")
+@Table(name = "sku", schema = "techbee")
 public class Sku {
 	@Id
 	@Column(name = "sku_id")
-	private Long skuId;
+	private int skuId;
 	@Column(name ="type")
 	private String type;
 	@Column(name ="name")
@@ -21,18 +21,18 @@ public class Sku {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Sku(Long skuId, String type, String name) {
+	public Sku(int skuId, String type, String name) {
 		super();
 		this.skuId = skuId;
 		this.type = type;
 		this.name = name;
 	}
 
-	public Long getSkuId() {
+	public int getSkuId() {
 		return skuId;
 	}
 
-	public void setSkuId(Long skuId) {
+	public void setSkuId(int skuId) {
 		this.skuId = skuId;
 	}
 

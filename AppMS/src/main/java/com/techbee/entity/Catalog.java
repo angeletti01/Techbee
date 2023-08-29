@@ -6,13 +6,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "catalog")
+@Table(name = "catalog", schema = "techbee")
 public class Catalog {
 	@Id
 	@Column(name ="catalog_id")
-	private Long catalogId;
+	private int catalogId;
 	@Column(name = "sku_id")
-	private Long skuId;
+	private int skuId;
 	@Column(name ="type")
 	private String type;
 	@Column(name ="name")
@@ -23,7 +23,7 @@ public class Catalog {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Catalog(Long catalogId, Long skuId, String type, String name) {
+	public Catalog(int catalogId, int skuId, String type, String name) {
 		super();
 		this.catalogId = catalogId;
 		this.skuId = skuId;
@@ -31,19 +31,19 @@ public class Catalog {
 		this.name = name;
 	}
 
-	public Long getCatalogId() {
+	public int getCatalogId() {
 		return catalogId;
 	}
 
-	public void setCatalogId(Long catalogId) {
+	public void setCatalogId(int catalogId) {
 		this.catalogId = catalogId;
 	}
 
-	public Long getSkuId() {
+	public int getSkuId() {
 		return skuId;
 	}
 
-	public void setSkuId(Long skuId) {
+	public void setSkuId(int skuId) {
 		this.skuId = skuId;
 	}
 

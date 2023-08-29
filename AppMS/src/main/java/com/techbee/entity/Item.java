@@ -1,12 +1,15 @@
 package com.techbee.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Item")
+@Table(name="Item", schema = "techbee")
 public class Item {
 	
 	@Id
@@ -25,7 +28,17 @@ public class Item {
 	@Column(name = "status")
 	private String status;	
 	@Column(name = "complete")
-	private boolean complete;
+	private boolean complete;	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "estimated_ship_date_range", referencedColumnName = "date_range_id")
+	private DateRange estimatedShipDateRange;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "new_estimated_ship_date_range", referencedColumnName = "date_range_id")
+	private DateRange newEstimatedShipDateRange;
+	@Column(name = "user_accepted_delay")
+	private boolean userAcceptedDelay;
+	@Column(name = "delay_accepted_date")
+	private String delayAcceptedDate;
 	
 	public Item() {
 		super();
@@ -33,7 +46,8 @@ public class Item {
 	}
 
 	public Item(int itemId, String name, String planId, String skuId, int quantity, String telephonNumber,
-			String status, boolean complete) {
+			String status, boolean complete, DateRange estimatedShipDateRange, DateRange newEstimatedShipDateRange,
+			boolean userAcceptedDelay, String delayAcceptedDate) {
 		super();
 		this.itemId = itemId;
 		this.name = name;
@@ -43,6 +57,10 @@ public class Item {
 		this.telephonNumber = telephonNumber;
 		this.status = status;
 		this.complete = complete;
+		this.estimatedShipDateRange = estimatedShipDateRange;
+		this.newEstimatedShipDateRange = newEstimatedShipDateRange;
+		this.userAcceptedDelay = userAcceptedDelay;
+		this.delayAcceptedDate = delayAcceptedDate;
 	}
 
 	public int getItemId() {
@@ -109,12 +127,45 @@ public class Item {
 		this.complete = complete;
 	}
 
+	public DateRange getEstimatedShipDateRange() {
+		return estimatedShipDateRange;
+	}
+
+	public void setEstimatedShipDateRange(DateRange estimatedShipDateRange) {
+		this.estimatedShipDateRange = estimatedShipDateRange;
+	}
+
+	public DateRange getNewEstimatedShipDateRange() {
+		return newEstimatedShipDateRange;
+	}
+
+	public void setNewEstimatedShipDateRange(DateRange newEstimatedShipDateRange) {
+		this.newEstimatedShipDateRange = newEstimatedShipDateRange;
+	}
+
+	public boolean isUserAcceptedDelay() {
+		return userAcceptedDelay;
+	}
+
+	public void setUserAcceptedDelay(boolean userAcceptedDelay) {
+		this.userAcceptedDelay = userAcceptedDelay;
+	}
+
+	public String getDelayAcceptedDate() {
+		return delayAcceptedDate;
+	}
+
+	public void setDelayAcceptedDate(String delayAcceptedDate) {
+		this.delayAcceptedDate = delayAcceptedDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Item [itemId=" + itemId + ", name=" + name + ", planId=" + planId + ", skuId=" + skuId + ", quantity="
 				+ quantity + ", telephonNumber=" + telephonNumber + ", status=" + status + ", complete=" + complete
-				+ "]";
-	}
-	
+				+ ", estimatedShipDateRange=" + estimatedShipDateRange + ", newEstimatedShipDateRange="
+				+ newEstimatedShipDateRange + ", userAcceptedDelay=" + userAcceptedDelay + ", delayAcceptedDate="
+				+ delayAcceptedDate + "]";
+	}		
 
 }

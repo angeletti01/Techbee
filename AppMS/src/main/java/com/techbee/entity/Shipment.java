@@ -1,26 +1,33 @@
 package com.techbee.entity;
 
-import java.sql.Date;
-import java.util.List;
+import java.util.Arrays;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Shipment")
+@Table(name = "Shipment", schema = "techbee")
 public class Shipment {
 
 	@Id
 	@Column(name = "shipment_id")
 	private int shipmentId;
-	@Column(name = "items")
-	private List<Item> items;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "items", referencedColumnName = "item_id")	
+	private Item[] items;
 	@Column(name="carrier")
 	private String carrier;
 	@Column(name="tracking_number")
+	private String trackingNumber;
+	@Column(name = "tracking_url")
 	private String trackingUrl;
+	@Column(name = "estimated_delivery_date")
+	private String estimatedDeliveryDate;
 	@Column(name = "shipDate")
 	private String shipDate;
 	
@@ -29,12 +36,15 @@ public class Shipment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Shipment(int shipmentId, List<Item> items, String carrier, String trackingUrl, String shipDate) {
+	public Shipment(int shipmentId, Item[] items, String carrier, String trackingNumber, String trackingUrl,
+			String estimatedDeliveryDate, String shipDate) {
 		super();
 		this.shipmentId = shipmentId;
 		this.items = items;
 		this.carrier = carrier;
+		this.trackingNumber = trackingNumber;
 		this.trackingUrl = trackingUrl;
+		this.estimatedDeliveryDate = estimatedDeliveryDate;
 		this.shipDate = shipDate;
 	}
 
@@ -46,11 +56,11 @@ public class Shipment {
 		this.shipmentId = shipmentId;
 	}
 
-	public List<Item> getItems() {
+	public Item[] getItems() {
 		return items;
 	}
 
-	public void setItems(List<Item> items) {
+	public void setItems(Item[] items) {
 		this.items = items;
 	}
 
@@ -62,12 +72,28 @@ public class Shipment {
 		this.carrier = carrier;
 	}
 
+	public String getTrackingNumber() {
+		return trackingNumber;
+	}
+
+	public void setTrackingNumber(String trackingNumber) {
+		this.trackingNumber = trackingNumber;
+	}
+
 	public String getTrackingUrl() {
 		return trackingUrl;
 	}
 
 	public void setTrackingUrl(String trackingUrl) {
 		this.trackingUrl = trackingUrl;
+	}
+
+	public String getEstimatedDeliveryDate() {
+		return estimatedDeliveryDate;
+	}
+
+	public void setEstimatedDeliveryDate(String estimatedDeliveryDate) {
+		this.estimatedDeliveryDate = estimatedDeliveryDate;
 	}
 
 	public String getShipDate() {
@@ -80,9 +106,9 @@ public class Shipment {
 
 	@Override
 	public String toString() {
-		return "Shipment [shipmentId=" + shipmentId + ", items=" + items + ", carrier=" + carrier + ", trackingUrl="
-				+ trackingUrl + ", shipDate=" + shipDate + "]";
-	}
-	
+		return "Shipment [shipmentId=" + shipmentId + ", items=" + Arrays.toString(items) + ", carrier=" + carrier
+				+ ", trackingNumber=" + trackingNumber + ", trackingUrl=" + trackingUrl + ", estimatedDeliveryDate="
+				+ estimatedDeliveryDate + ", shipDate=" + shipDate + "]";
+	}	
 	
 }

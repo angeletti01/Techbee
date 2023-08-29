@@ -1,15 +1,19 @@
 package com.techbee.entity;
 
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="order")
+@Table(name="order", schema = "techbee")
 public class Order {
 	
 	@Id
@@ -20,23 +24,26 @@ public class Order {
 	@Column(name = "customer_id")
 	private String customerId;
 	@Column(name = "items")
-	private List<Item> items;	
+	private Item[] items;	
 	@Column(name = "status")
 	private String status;
 	@Column(name = "complete")
 	private boolean complete;
-	@Column(name = "shipping_address")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "shipping_address", referencedColumnName = "address_id")
 	private Address shippingAddress;
-	@Column(name = "shipments")
-	private List<Shipment> shipments;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "shipment_id", referencedColumnName = "shipment_id")
+	private Shipment[] shipments;
 	
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Order(int id, int orderId, String customerId, List<Item> items, String status, boolean complete,
-			Address shippingAddress, List<Shipment> shipments) {
+	public Order(int id, int orderId, String customerId, Item[] items, String status, boolean complete,
+			Address shippingAddress, Shipment[] shipments) {
 		super();
 		this.id = id;
 		this.orderId = orderId;
@@ -72,11 +79,11 @@ public class Order {
 		this.customerId = customerId;
 	}
 
-	public List<Item> getItems() {
+	public Item[] getItems() {
 		return items;
 	}
 
-	public void setItems(List<Item> items) {
+	public void setItems(Item[] items) {
 		this.items = items;
 	}
 
@@ -104,19 +111,19 @@ public class Order {
 		this.shippingAddress = shippingAddress;
 	}
 
-	public List<Shipment> getShipments() {
+	public Shipment[] getShipments() {
 		return shipments;
 	}
 
-	public void setShipments(List<Shipment> shipments) {
+	public void setShipments(Shipment[] shipments) {
 		this.shipments = shipments;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", orderId=" + orderId + ", customerId=" + customerId + ", items=" + items
-				+ ", status=" + status + ", complete=" + complete + ", shippingAddress=" + shippingAddress
-				+ ", shipments=" + shipments + "]";
-	}		
+		return "Order [id=" + id + ", orderId=" + orderId + ", customerId=" + customerId + ", items="
+				+ Arrays.toString(items) + ", status=" + status + ", complete=" + complete + ", shippingAddress="
+				+ shippingAddress + ", shipments=" + Arrays.toString(shipments) + "]";
+	}	
 	
 }

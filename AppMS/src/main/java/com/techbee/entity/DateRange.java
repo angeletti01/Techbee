@@ -6,12 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "date_range")
+@Table(name = "date_range", schema = "techbee")
 public class DateRange {
 	
 @Id
 @Column(name = "date_range_id")
-private int dateRateId;
+private int dateRangeId;
 @Column(name = "fromDate")
 private String fromDate;
 @Column(name = "toDate")
@@ -22,19 +22,19 @@ public DateRange() {
 	// TODO Auto-generated constructor stub
 }
 
-public DateRange(int dateRateId, String fromDate, String toDate) {
+public DateRange(int dateRangeId, String fromDate, String toDate) {
 	super();
-	this.dateRateId = dateRateId;
+	this.dateRangeId = dateRangeId;
 	this.fromDate = fromDate;
 	this.toDate = toDate;
 }
 
-public int getDateRateId() {
-	return dateRateId;
+public int getDateRangeId() {
+	return dateRangeId;
 }
 
-public void setDateRateId(int dateRateId) {
-	this.dateRateId = dateRateId;
+public void setDateRangeId(int dateRangeId) {
+	this.dateRangeId = dateRangeId;
 }
 
 public String getFromDate() {
@@ -55,7 +55,7 @@ public void setToDate(String toDate) {
 
 @Override
 public String toString() {
-	return "DateRange [dateRateId=" + dateRateId + ", fromDate=" + fromDate + ", toDate=" + toDate + "]";
+	return "DateRange [dateRangeId=" + dateRangeId + ", fromDate=" + fromDate + ", toDate=" + toDate + "]";
 }
 
 }

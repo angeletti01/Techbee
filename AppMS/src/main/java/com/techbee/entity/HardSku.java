@@ -6,8 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "hard_sku")
-public class HardSku extends Sku {
+@Table(name = "hard_sku", schema = "techbee")
+public class HardSku{
 	
 	@Id
 	@Column(name="hard_sku_id")
@@ -31,7 +31,7 @@ public class HardSku extends Sku {
 	}
 
 	public HardSku(Long skuId, String type, String name) {
-		super(skuId, type, name);
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
