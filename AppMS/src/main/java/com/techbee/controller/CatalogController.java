@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.techbee.entity.Catalog;
 import com.techbee.exception.CatalogNotFoundException;
-import com.techbee.repo.CatalogRepo;
 import com.techbee.service.CatalogService;
 
 @RestController(value = "CatalogController")
