@@ -10,7 +10,7 @@ import com.techbee.entity.Catalog;
 @Repository(value = "CatalogRepo")
 public interface CatalogRepo extends JpaRepository <Catalog, Integer> {
 
-	Optional<Catalog> findCatalogById(int catalogId);
+	Optional<Catalog> findCatalogBySkuId(int skuId);
 	 
  
 	

@@ -1,6 +1,7 @@
 package com.techbee.entity;
 
 import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,9 +19,9 @@ public class Shipment {
 	@Id
 	@Column(name = "shipment_id")
 	private int shipmentId;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "items", referencedColumnName = "item_id")	
-	private Item[] items;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "items", referencedColumnName = "item_id")
+	private Item items;
 	@Column(name="carrier")
 	private String carrier;
 	@Column(name="tracking_number")
@@ -36,7 +38,7 @@ public class Shipment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Shipment(int shipmentId, Item[] items, String carrier, String trackingNumber, String trackingUrl,
+	public Shipment(int shipmentId, Item items, String carrier, String trackingNumber, String trackingUrl,
 			String estimatedDeliveryDate, String shipDate) {
 		super();
 		this.shipmentId = shipmentId;
@@ -56,11 +58,11 @@ public class Shipment {
 		this.shipmentId = shipmentId;
 	}
 
-	public Item[] getItems() {
+	public Item getItems() {
 		return items;
 	}
 
-	public void setItems(Item[] items) {
+	public void setItems(Item items) {
 		this.items = items;
 	}
 
@@ -106,7 +108,7 @@ public class Shipment {
 
 	@Override
 	public String toString() {
-		return "Shipment [shipmentId=" + shipmentId + ", items=" + Arrays.toString(items) + ", carrier=" + carrier
+		return "Shipment [shipmentId=" + shipmentId + ", items=" + items + ", carrier=" + carrier
 				+ ", trackingNumber=" + trackingNumber + ", trackingUrl=" + trackingUrl + ", estimatedDeliveryDate="
 				+ estimatedDeliveryDate + ", shipDate=" + shipDate + "]";
 	}	

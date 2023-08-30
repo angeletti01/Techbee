@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,16 +30,22 @@ public class Item {
 	private String status;	
 	@Column(name = "complete")
 	private boolean complete;	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "estimated_ship_date_range", referencedColumnName = "date_range_id")
-	private DateRange estimatedShipDateRange;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "new_estimated_ship_date_range", referencedColumnName = "date_range_id")
-	private DateRange newEstimatedShipDateRange;
 	@Column(name = "user_accepted_delay")
 	private boolean userAcceptedDelay;
 	@Column(name = "delay_accepted_date")
 	private String delayAcceptedDate;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "date_range")
+	@JoinColumn(name = "estimated_ship_date_range", referencedColumnName = "date_range_id")
+	private DateRange estimatedShipDateRange;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "date_range")
+	@JoinColumn(name = "new_estimated_ship_date_range", referencedColumnName = "date_range_id")
+	private DateRange newEstimatedShipDateRange;
+	
+	
 	
 	public Item() {
 		super();

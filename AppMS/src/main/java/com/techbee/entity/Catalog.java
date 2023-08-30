@@ -4,7 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
 @Entity
@@ -14,8 +17,11 @@ public class Catalog implements Serializable{
 	@Id
 	@Column(name ="catalog_id")
 	private int catalogId;
-	@Column(name = "sku_id")
+	
+	@JoinTable(name ="sku")
+	@JoinColumn(name = "sku_id")	
 	private int skuId;
+	
 	@Column(name ="type")
 	private String type;
 	@Column(name ="name")

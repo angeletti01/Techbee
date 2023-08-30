@@ -17,9 +17,9 @@ public class CatalogService {
 		this.cr = cr;
 	}
 
-	public Catalog findCatalogBySkuId(int catalogId) throws CatalogNotFoundException{
-		return cr.findCatalogById(catalogId).orElseThrow(() ->
-		new CatalogNotFoundException("Catalog ID: "+ catalogId + "Not Found!!!"));
+	public Catalog findCatalogBySkuId(int skuId) throws CatalogNotFoundException{
+		return cr.findCatalogBySkuId(skuId).orElseThrow(() ->
+		new CatalogNotFoundException("Catalog ID: "+ skuId + "Not Found!!!"));
 	}
 	
 }

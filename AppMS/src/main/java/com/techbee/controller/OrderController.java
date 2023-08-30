@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.techbee.entity.Item;
 import com.techbee.entity.Order;
 import com.techbee.entity.Shipment;
 import com.techbee.exception.OrderNotFoundException;
@@ -40,14 +41,14 @@ private final OrderService os;
 	}
 	
 	@PostMapping("orderactions/cancelItem/{itemId}")
-	public ResponseEntity<Order> cancelItemById(@PathVariable("itemId") int itemId){
-	os.deleteItemById(itemId);
+	public ResponseEntity<Order> cancelItemById(@PathVariable("item") Item item){
+	os.deleteByItem(item);
 	return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PostMapping("orderactions/cancelOrder/{orderId}")
 	public ResponseEntity<Order> cancelOrderById(@PathVariable("orderId") int orderId){
-		os.deleteItemById(orderId);
+		os.deleteOrderById(orderId);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

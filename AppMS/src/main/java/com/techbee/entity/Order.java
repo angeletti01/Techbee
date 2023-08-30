@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,33 +24,39 @@ public class Order implements Serializable {
 	@Column(name = "order_id")
 	private int orderId;
 	@Column(name = "customer_id")
-	private String customerId;
-	@Column(name = "items")
-	private Item items[];	
+	private String customerId;	
 	@Column(name = "status")
 	private String status;
 	@Column(name = "complete")
 	private boolean complete;
+	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "item")
+	@JoinColumn(name = "item", referencedColumnName = "item_id")	
+	private Item item;	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "address")
 	@JoinColumn(name = "shipping_address", referencedColumnName = "address_id")
 	private Address shippingAddress;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "shipment")
 	@JoinColumn(name = "shipment_id", referencedColumnName = "shipment_id")
-	private Shipment[] shipments;
+	private Shipment shipments;
 	
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Order(int id, int orderId, String customerId, Item items[], String status, boolean complete,
-			Address shippingAddress, Shipment[] shipments) {
+	public Order(int id, int orderId, String customerId, Item item, String status, boolean complete,
+			Address shippingAddress, Shipment shipments) {
 		super();
 		this.id = id;
 		this.orderId = orderId;
 		this.customerId = customerId;
-		this.items[id] = items[id];
+		this.item = item;
 		this.status = status;
 		this.complete = complete;
 		this.shippingAddress = shippingAddress;
@@ -80,12 +87,12 @@ public class Order implements Serializable {
 		this.customerId = customerId;
 	}
 
-	public Item getItems(int itemId) {
-		return items[itemId];
+	public Item getItem() {
+		return item;
 	}
 
-	public void setItems(Item[] items) {
-		this.items = items;
+	public void setItem(Item items) {
+		this.item = items;
 	}
 
 	public String getStatus() {
@@ -112,19 +119,19 @@ public class Order implements Serializable {
 		this.shippingAddress = shippingAddress;
 	}
 
-	public Shipment getShipments(int shippingId) {
-		return shipments[shippingId];
+	public Shipment getShipments() {
+		return shipments;
 	}
 
-	public void setShipments(Shipment[] shipments) {
+	public void setShipments(Shipment shipments) {
 		this.shipments = shipments;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", orderId=" + orderId + ", customerId=" + customerId + ", items=" + items
+		return "Order [id=" + id + ", orderId=" + orderId + ", customerId=" + customerId + ", items=" + item
 				+ ", status=" + status + ", complete=" + complete + ", shippingAddress=" + shippingAddress
-				+ ", shipments=" + Arrays.toString(shipments) + "]";
+				+ ", shipments=" + shipments + "]";
 	}	
 	
 }
