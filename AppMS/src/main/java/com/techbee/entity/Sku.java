@@ -1,5 +1,7 @@
 package com.techbee.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "sku", schema = "techbee")
-public class Sku {
+public class Sku implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "sku_id")
 	private int skuId;
@@ -17,8 +21,7 @@ public class Sku {
 	private String name;
 	
 	public Sku() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();		
 	}
 
 	public Sku(int skuId, String type, String name) {

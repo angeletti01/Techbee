@@ -28,22 +28,35 @@ public class Order implements Serializable {
 	@Column(name = "status")
 	private String status;
 	@Column(name = "complete")
-	private boolean complete;
+	private boolean complete;		
+	
+	@JoinColumn(name = "item_id", referencedColumnName = "item_id")	
+	private Integer itemId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinTable(name = "item")
-	@JoinColumn(name = "item", referencedColumnName = "item_id")	
+	@JoinColumn(name = "item_id", referencedColumnName = "item_id")	
 	private Item item;	
+		
+	@OneToOne(cascade = CascadeType.ALL)
+	//@JoinTable(name = "address")
+	@JoinColumn(name = "shipping_id", referencedColumnName = "address_id")
+	private Address shippingAddress;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinTable(name = "address")
-	@JoinColumn(name = "shipping_address", referencedColumnName = "address_id")
-	private Address shippingAddress;
+	@JoinColumn(name = "address_id", referencedColumnName = "address_id")
+	private Address addressId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	//@JoinTable(name = "shipment")
+	@JoinColumn(name = "shipment_id", referencedColumnName = "shipment_id")
+	private Shipment shipments;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinTable(name = "shipment")
 	@JoinColumn(name = "shipment_id", referencedColumnName = "shipment_id")
-	private Shipment shipments;
+	private Shipment shipmentId;
 	
 	public Order() {
 		super();

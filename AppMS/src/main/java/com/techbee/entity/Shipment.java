@@ -1,5 +1,6 @@
 package com.techbee.entity;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +15,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Shipment", schema = "techbee")
-public class Shipment {
+public class Shipment implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "shipment_id")
 	private int shipmentId;

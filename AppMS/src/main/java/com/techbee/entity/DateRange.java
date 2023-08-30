@@ -1,5 +1,7 @@
 package com.techbee.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,8 +9,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "date_range", schema = "techbee")
-public class DateRange {
-	
+public class DateRange implements Serializable{	
+
+	private static final long serialVersionUID = 1L;
 @Id
 @Column(name = "date_range_id")
 private int dateRangeId;
@@ -19,7 +22,7 @@ private String toDate;
 
 public DateRange() {
 	super();
-	// TODO Auto-generated constructor stub
+	
 }
 
 public DateRange(int dateRangeId, String fromDate, String toDate) {

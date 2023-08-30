@@ -23,18 +23,22 @@ public class OrderService {
 	
 	public Order findOrderById(int orderId) throws OrderNotFoundException {
 		
-		return or.findByOrderId(orderId).orElseThrow(()-> new OrderNotFoundException("Order Number: "+ orderId + "Not Found!"));
+		return or.findByOrderId(orderId).orElseThrow(()-> new OrderNotFoundException("Order Number: "+ orderId + " Not Found!"));
 	}
 	
-	public String acceptShippingDate(String shippingDate) {
-		Shipment s = new Shipment();
-		s.setShipDate(shippingDate);
-		return shippingDate;
+	public Order findOrderByItemId(int itemId) throws OrderNotFoundException{
+		return or.findByItemId(itemId).orElseThrow(()-> new OrderNotFoundException("Item Number: " + itemId + " NotFound!"));
 	}
 	
-	public void deleteByItem(Item item) {		
+//	public String acceptShippingDate(String shippingDate) {
+//		Shipment s = new Shipment();
+//		s.setShipDate(shippingDate);
+//		return shippingDate;
+//	}
+	
+	public void updateOrder(Order order) {		
 		
-		or.deleteOrderByItem(item);
+		or.saveAndFlush(order);
 	}
 	
 	public void deleteOrderById(int orderId) {
