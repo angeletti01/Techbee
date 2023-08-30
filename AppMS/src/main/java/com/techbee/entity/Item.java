@@ -1,17 +1,21 @@
 package com.techbee.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Item", schema = "techbee")
-public class Item {
+public class Item implements Serializable{	
 	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name ="item_id")
 	private int itemId;	
@@ -23,29 +27,40 @@ public class Item {
 	private String skuId;	
 	@Column(name = "quantity")
 	private int quantity;	
-	@Column(name = "telephon_number")
-	private String telephonNumber;	
+	@Column(name = "telephone_number")
+	private String telephoneNumber;	
 	@Column(name = "status")
 	private String status;	
 	@Column(name = "complete")
 	private boolean complete;	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "estimated_ship_date_range", referencedColumnName = "date_range_id")
-	private DateRange estimatedShipDateRange;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "new_estimated_ship_date_range", referencedColumnName = "date_range_id")
-	private DateRange newEstimatedShipDateRange;
 	@Column(name = "user_accepted_delay")
-	private boolean userAcceptedDelay;
+	private Boolean userAcceptedDelay;
 	@Column(name = "delay_accepted_date")
 	private String delayAcceptedDate;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	//@JoinTable(name = "date_range")
+	@JoinColumn(name = "estimated_ship_date_range", referencedColumnName = "date_range_id")
+	private DateRange estimatedShipDateRange;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "date_range")
+	@JoinColumn(name = "date_range_id", referencedColumnName = "date_range_id")
+	private DateRange dateRangeId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	//@JoinTable(name = "date_range")
+	@JoinColumn(name = "new_estimated_ship_date_range", referencedColumnName = "date_range_id")
+	private DateRange newEstimatedShipDateRange;
+	
+	
 	
 	public Item() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Item(int itemId, String name, String planId, String skuId, int quantity, String telephonNumber,
+	public Item(int itemId, String name, String planId, String skuId, int quantity, String telephoneNumber,
 			String status, boolean complete, DateRange estimatedShipDateRange, DateRange newEstimatedShipDateRange,
 			boolean userAcceptedDelay, String delayAcceptedDate) {
 		super();
@@ -54,7 +69,7 @@ public class Item {
 		this.planId = planId;
 		this.skuId = skuId;
 		this.quantity = quantity;
-		this.telephonNumber = telephonNumber;
+		this.telephoneNumber = telephoneNumber;
 		this.status = status;
 		this.complete = complete;
 		this.estimatedShipDateRange = estimatedShipDateRange;
@@ -103,12 +118,12 @@ public class Item {
 		this.quantity = quantity;
 	}
 
-	public String getTelephonNumber() {
-		return telephonNumber;
+	public String getTelephoneNumber() {
+		return telephoneNumber;
 	}
 
-	public void setTelephonNumber(String telephonNumber) {
-		this.telephonNumber = telephonNumber;
+	public void setTelephoneNumber(String telephoneNumber) {
+		this.telephoneNumber = telephoneNumber;
 	}
 
 	public String getStatus() {
@@ -162,7 +177,7 @@ public class Item {
 	@Override
 	public String toString() {
 		return "Item [itemId=" + itemId + ", name=" + name + ", planId=" + planId + ", skuId=" + skuId + ", quantity="
-				+ quantity + ", telephonNumber=" + telephonNumber + ", status=" + status + ", complete=" + complete
+				+ quantity + ", telephonNumber=" + telephoneNumber + ", status=" + status + ", complete=" + complete
 				+ ", estimatedShipDateRange=" + estimatedShipDateRange + ", newEstimatedShipDateRange="
 				+ newEstimatedShipDateRange + ", userAcceptedDelay=" + userAcceptedDelay + ", delayAcceptedDate="
 				+ delayAcceptedDate + "]";

@@ -1,18 +1,33 @@
 package com.techbee.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "catalog", schema = "techbee")
-public class Catalog {
+public class Catalog implements Serializable{
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name ="catalog_id")
-	private int catalogId;
-	@Column(name = "sku_id")
-	private int skuId;
+	private int catalogId;	
+	
+	@JoinColumn(name = "sku_id", referencedColumnName = "sku_id")	
+	private Integer skuId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name ="sku")
+	@JoinColumn(name = "sku_id", referencedColumnName = "sku_id")		
+	private Sku sku;
+	
 	@Column(name ="type")
 	private String type;
 	@Column(name ="name")
@@ -43,7 +58,7 @@ public class Catalog {
 		return skuId;
 	}
 
-	public void setSkuId(int skuId) {
+	public void setSku(int skuId) {
 		this.skuId = skuId;
 	}
 
